@@ -19,12 +19,14 @@
         </div> 
     </section>
 
-    <div class="container">
-        <div class="columns">
-        {% block content %}
+    {% for post in posts %}
 
-        {% endblock content%}
-        </div>
-    </div>
+<tb>
+    <tr>
+        <td>{{post}}</td>
+    </tr>
+</tb>
+
+{% endfor %}
 </body>
 </html>

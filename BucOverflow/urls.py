@@ -6,5 +6,5 @@ from .views import dashboard
 app_name = "BucOverflow"
 
 urlpatterns = [
-    path("", dashboard, name="dashboard"),
+    path("", views.dashboard, name="dashboard"),
 ]
