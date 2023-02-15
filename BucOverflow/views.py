@@ -8,4 +8,4 @@ def index(request):
 # Create your views here.
 
 def dashboard(request):
-    return render(request, "dwitter/dashboard.html")
+    return render(request, "base.html")
