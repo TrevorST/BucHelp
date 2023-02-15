@@ -12,7 +12,8 @@ class Post(models.Model):
         return (
             f"{self.user} "
             f"({self.created_at:%Y-%m-%d %H:%M}): "
-            f"{self.body[:30]}..."
+            f"{self.body[:150]}..."
+            f"\n"
         )
 class User(models.Model):
     text = models.CharField(max_length=50)
