@@ -6,12 +6,8 @@ from .views import base, index, discussions, home
 app_name = "BucOverflow"
 
 urlpatterns = [
-<<<<<<< Updated upstream
-    path("", views.dashboard, name="dashboard"),
-=======
     path("", views.base, name="base"),
     path("index", views.index, name="index"),
-    path("discussions", views.discussions),
+    path("discussions", views.discussions, name="discussions"),
     path("home", views.home, name="home"),
->>>>>>> Stashed changes
 ]

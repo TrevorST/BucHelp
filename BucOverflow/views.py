@@ -6,12 +6,6 @@ from .models import Post
 
 # Create your views here.
 
-<<<<<<< Updated upstream
-def dashboard(request):
-    posts = Post.objects.all()
-    context = {'posts' : posts,}
-    return render(request, "dashboard.html", context)
-=======
 def base(request):
     return render(request, "base.html")
 
@@ -24,5 +18,3 @@ def home(request):
 def discussions(request):
     return render(request, "discussions.html")
 
-
->>>>>>> Stashed changes
