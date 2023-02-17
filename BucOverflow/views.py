@@ -16,5 +16,7 @@ def home(request):
     return render(request, "home.html")
 
 def discussions(request):
-    return render(request, "discussions.html")
+    posts = Post.objects.all()
+    context = { 'posts' : posts,}
+    return render(request, "discussions.html", context)
 

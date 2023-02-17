@@ -1,30 +1,17 @@
 {% extends "base.html" %}
+{% block content %}
+
 
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include the Bulma CSS framework for styling-->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>BucOverflow</title>
-</head>
+
 <body>
+    <td>
+    {% for post in posts %}
+    <tr> {{ post }} </tr>
+    {% endfor %}
+    </td>
     <h1 class="title is-1">Discussions</h1>
-    <section class="hero is-small is-success mb-4">
-        <div class="hero-body">
-            <h1 class="title is-1">Discussions</h1>
-        </div> 
-    </section>
-
-    <div class="container">
-        <div class="columns">
-        {% block content %}
-
-        {% endblock content%}
-        </div>
-    </div>
 </body>
 </html>
 
+{% endblock content%}
