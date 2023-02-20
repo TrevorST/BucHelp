@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 
 <body>
-    <td>
+    <table>
     {% for post in posts %}
-    <tr> {{ post }} </tr>
+        <tr> <a href="/post/{{post.slug}}/">{{ post.title }} {{ post.slug}}</a></tr>
     {% endfor %}
-    </td>
+    </table>
     <h1 class="title is-1">Discussions</h1>
 </body>
 </html>

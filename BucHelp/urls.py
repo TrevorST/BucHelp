@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("BucOverflow.urls")),
     path('admin/', admin.site.urls),
     path('bucoverflow/', include('BucOverflow.urls')),
+    
 ]
