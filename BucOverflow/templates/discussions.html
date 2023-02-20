@@ -3,6 +3,7 @@
 
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 
 <body>
     <table>
@@ -10,7 +11,106 @@
         <tr> <a href="/post/{{post.slug}}/">{{ post.title }} {{ post.slug}}</a></tr>
     {% endfor %}
     </table>
+=======
+<head>
+>>>>>>> experimental
     <h1 class="title is-1">Discussions</h1>
+
+    <style>
+        /* Define the button style */
+        .create-post-button {
+          background-color: #C6930A;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 5px;
+        }
+      </style>
+
+      <style>
+        .delete-post-button {
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+      </style>
+
+      <button class="delete-post-button">Delete Post</button>
+      
+      
+      <button class="create-post-button">Create Post</button>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+
+</head>
+<body>
+    <table>
+  {% for post in posts %}
+        <tr> <a href="/post/{{post.slug}}/">{{ post.title }} {{ post.slug}}</a></tr>
+    {% endfor %}
+    </table>
+
+    <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border: 1px solid #ddd;
+        }
+        th {
+          background-color: #f2f2f2;
+          font-family: 'Quicksand', sans-serif;
+        }
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+      </style>
+      
+      <!-- Add this link to the <head> section of your HTML file -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Username</th>
+            <th>Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Example Title 1</td>
+            <td>username1</td>
+            <td>Example content for row 1</td>
+          </tr>
+          <tr>
+            <td>Example Title 2</td>
+            <td>username2</td>
+            <td>Example content for row 2</td>
+          </tr>
+          <tr>
+            <td>Example Title 3</td>
+            <td>username3</td>
+            <td>Example content for row 3</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
 </body>
 </html>
 
