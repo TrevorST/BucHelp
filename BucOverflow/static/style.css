@@ -1,0 +1,25 @@
+.comment{
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid #ffa94d;
+    color: green;
+}
+
+.comment-section{
+    color: #000;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.post-section{
+
+}
+.post-title{
+
+}
+.post-content{
+
+}
+
+.post-container{
+
+}
