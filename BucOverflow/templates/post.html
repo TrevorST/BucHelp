@@ -5,10 +5,16 @@
 <!DOCTYPE html>
 
 <body>
+    <a href="{% url 'discussions' %}">Back</a>
     <h1 class="title is-1">post</h1>
     <ul>
         <li><h1>title:{{post.title}}</h1></li>
         <li><a>content:{{post.content}}</a></li>
+        <ul>
+            {% for comment in post.comments.all %}
+                <li> comment: {{ comment.content }}</li>
+            {% endfor %}
+        </ul>
     </ul>
     
 </body>

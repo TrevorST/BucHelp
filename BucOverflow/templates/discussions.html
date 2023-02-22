@@ -3,23 +3,15 @@
 
 
 <!DOCTYPE html>
-<<<<<<< HEAD
 
 <body>
-    <table>
-    {% for post in posts %}
-        <tr> <a href="/post/{{post.slug}}/">{{ post.title }} {{ post.slug}}</a></tr>
-    {% endfor %}
-    </table>
-=======
-<head>
->>>>>>> experimental
+  
     <h1 class="title is-1">Discussions</h1>
 
     <style>
         /* Define the button style */
         .create-post-button {
-          background-color: #C6930A;
+          background-color: #FF0000;
           color: white;
           border: none;
           padding: 10px 20px;
@@ -34,7 +26,7 @@
 
       <style>
         .delete-post-button {
-            background-color: #FF0000;
+            background-color: #00d1b2;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -56,11 +48,6 @@
 
 </head>
 <body>
-    <table>
-  {% for post in posts %}
-        <tr> <a href="/post/{{post.slug}}/">{{ post.title }} {{ post.slug}}</a></tr>
-    {% endfor %}
-    </table>
 
     <style>
         table {
@@ -84,20 +71,24 @@
       <!-- Add this link to the <head> section of your HTML file -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
       
+      <tr>  {{ post.slug}}</a></tr>
+
       <table>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Username</th>
-            <th>Content</th>
+            <th style="font-weight: bolder; color:black;">Title</th>
+            <th style="font-weight: bolder; color:black;">Username</th>
+            <th style="font-weight: bolder; color:black;">Content</th>
           </tr>
         </thead>
         <tbody>
+          {% for post in posts %}
           <tr>
-            <td>Example Title 1</td>
-            <td>username1</td>
-            <td>Example content for row 1</td>
+            <td><a href="/post/{{post.slug}}/">{{ post.title }}</a></th>
+            <td>{{ post.user }}</th>
+            <td>{{post.content}}</th>
           </tr>
+          {% endfor %}
           <tr>
             <td>Example Title 2</td>
             <td>username2</td>

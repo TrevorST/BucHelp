@@ -15,7 +15,8 @@ except ImportError:  # django < 1.5
 
 
 class Reply(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    #default poster is anon
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default="anon")
     content = models.TextField(blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -24,7 +25,7 @@ class Reply(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     content  = models.TextField(blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     replies = models.ManyToManyField(Reply, blank=True)
@@ -37,7 +38,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100, default='no title')
     #slug is the url
     slug = models.SlugField(max_length=400, unique=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(blank=True, default='')
     body = models.TextField(max_length=10000, default='') #delete
     created_at = models.DateTimeField(auto_now_add=True)
