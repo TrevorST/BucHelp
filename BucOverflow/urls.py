@@ -10,4 +10,5 @@ urlpatterns = [
     path("index", views.index, name="index"),
     path("discussions", views.discussions, name="discussions"),
     path("home", views.home, name="home"),
+    path("login", views.login, name="login"),
 ]

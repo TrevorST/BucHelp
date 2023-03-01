@@ -15,6 +15,9 @@ def index(request):
 def home(request):
     return render(request, "home.html")
 
+def login(request):
+    return render(request, "login.html")
+
 def discussions(request):
     posts = Post.objects.all()
     context = { 'posts' : posts,}
