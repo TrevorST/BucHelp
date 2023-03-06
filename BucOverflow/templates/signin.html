@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 style="text-align:center; margin-block:50px; color:red;">LogIn</h1>
+
+<form method="POST" action="." style="margin-left:150px;">
+    {% csrf_token %}    
+
+    <input type="submit" value="Signin"  style="margin-block:50px;">
+</form>
+
+{% endblock content %}

@@ -5,7 +5,7 @@
     <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/bucoverflow/index">
-      <img src="https://www.etsu.edu/bucscare/pictures/etsu_shield_logo.jpg" width="112" height="28">
+      <img src="{% static 'kinser.jpg' %}" width="112" height="28">
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -54,10 +54,10 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <a class="button is-primary"  href="/bucoverflow/signin">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
+          <a class="button is-light" href="/bucoverflow/signin">
             Log in
           </a>
         </div>
