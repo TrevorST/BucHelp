@@ -5,7 +5,10 @@ try:
 except:
     from django.urls import reverse
 from . import models
-from .models import Post
+from .forms import SignUpForm
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 
 ##REGISTRATION///LOGIN imports//
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -35,6 +38,9 @@ def index(request):
 
 def home(request):
     return render(request, "home.html")
+
+def homeredirect():
+    return HttpResponse.request
 
 
 def post(request, slug):
@@ -78,4 +84,9 @@ def signin(request):
 def logout(request):
     lt(request)
     return redirect("/home")
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = "signup.html"
+    success_url = reverse_lazy('BucOverflow:home')
 

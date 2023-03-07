@@ -59,6 +59,7 @@
       <div class="navbar-item">
         {% if not user.is_authenticated %}
         <div class="buttons">
+          <a href="/bucoverflow/signup" class="button is-primary">
           <a class="button is-primary"  href="/bucoverflow/signin">
             <strong>Sign up</strong>
           </a>
@@ -85,6 +86,9 @@
   <!-- Include the Bulma CSS framework for styling-->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<body>
+  {% block content %}
+
 
 </html>
 {% block content %}
