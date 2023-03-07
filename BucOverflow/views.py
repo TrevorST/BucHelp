@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
 from . import models
-from .models import Post
+from .forms import SignUpForm
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 
 # Create your views here.
 
@@ -15,6 +18,14 @@ def index(request):
 def home(request):
     return render(request, "home.html")
 
+def homeredirect():
+    return HttpResponse.request
+
 def discussions(request):
     return render(request, "discussions.html")
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = "signup.html"
+    success_url = reverse_lazy('BucOverflow:home')
 

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Post(models.Model):
-    user = models.ForeignKey(User, related_name="dweets", on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, related_name="posts", on_delete=models.DO_NOTHING)
     body = models.CharField(max_length=140)
     created_at = models.DateTimeField(auto_now_add=True)
     
@@ -15,8 +15,7 @@ class Post(models.Model):
             f"{self.body[:150]}..."
             f"\n"
         )
-class User(models.Model):
-    text = models.CharField(max_length=50)
+
 
     
 
