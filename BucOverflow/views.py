@@ -12,25 +12,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth import logout as lt
 
 
-#####REGISTRATION///LOGIN####
-def signin(request):
-    context = {}
-    form = AuthenticationForm(request, data=request.POST)
-    if request.method == "POST":
-        if form.is_valid():
-            user = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(username=user, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("home")
-    context.update({
-        "form": form,
-        "title": "Signin",
-    })
-    return render(request, "signin.html", context)
+
 
 
 
@@ -67,5 +52,30 @@ def discussions(request):
     return render(request, "discussions.html", context)
 
 
-    
+
+#####REGISTRATION///LOGIN####
+def signin(request):
+    context = {}
+    form = AuthenticationForm(request, data=request.POST)
+    if request.method == "POST":
+        #username = request.POST['username']
+        #password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username)
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            #sucsess
+            login(request, user)
+            return redirect("/home")
+    context.update({
+        "form": form,
+        "title": "Signin",
+    })
+    return render(request, "signin.html", context)
+
+@login_required
+def logout(request):
+    lt(request)
+    return redirect("/home")
 

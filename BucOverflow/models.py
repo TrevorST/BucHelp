@@ -13,12 +13,12 @@ User = get_user_model()
 @receiver(post_save, sender=User)
 def create_user_author(sender, instance, created, **kwargs):
     if created:
-        Author.objects.create(user=instance, fullname=instance.first_name+instance.last_name)
+        Author.objects.create(user=instance, slug=slugify(instance.username), fullname=instance.first_name+instance.last_name)
 
 class Author(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     fullname = models.CharField(max_length=40, blank=True)
-    slug = slug = models.SlugField(max_length=400, unique=True, blank=True)
+    slug = models.SlugField(max_length=400, unique=True, blank=True)
     bio = models.TextField(blank=True,max_length=10000, default='Welcome to my page!')
     karma = models.IntegerField(default=0)
 

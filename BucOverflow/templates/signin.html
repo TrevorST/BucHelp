@@ -1,12 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bulma CSS Login Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
 
-<h1 style="text-align:center; margin-block:50px; color:red;">LogIn</h1>
-
-<form method="POST" action="." style="margin-left:150px;">
-    {% csrf_token %}    
-
-    <input type="submit" value="Signin"  style="margin-block:50px;">
-</form>
+    <body>
+        <div class="hero is-fullheight">
+            <div class="hero-body is-justify-content-center is-align-items-center">
+                <div class="columns is-flex is-flex-direction-column box">
+                <form method="POST" action="">
+                    {% csrf_token %}   
+                    <div class="column">
+                        <label for="email">Username</label>
+                        <!---name is used for django post--->
+                        <input class="input is-primary" name="username" type="username" placeholder="Username">
+                    </div>
+                    <div class="column">
+                        <label for="Name">Password</label>
+                        <input class="input is-primary" name="password" type="password" placeholder="Password">
+                        <a href="forget.html" class="is-size-7 has-text-primary">forget password?</a>
+                    </div>
+                    <div class="column">
+                        <!---SUBMIT-->
+                        <button class="button is-primary is-fullwidth" type="submit">Login</button>
+                    </div>
+                    <div class="has-text-centered">
+                        <p class="is-size-7"> Don't have an account? <a href="#" class="has-text-primary">Sign up</a>
+                        </p>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </body>
 
 {% endblock content %}
