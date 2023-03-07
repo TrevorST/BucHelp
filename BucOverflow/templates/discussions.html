@@ -1,30 +1,108 @@
 {% extends "base.html" %}
+{% block content %}
+
 
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include the Bulma CSS framework for styling-->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>BucOverflow</title>
+
+<body>
+  
+    <h1 class="title is-1">Discussions</h1>
+
+    <style>
+        /* Define the button style */
+        .create-post-button {
+          background-color: #FF0000;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 5px;
+        }
+      </style>
+
+      <style>
+        .delete-post-button {
+            background-color: #00d1b2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+      </style>
+
+      <button class="delete-post-button">Delete Post</button>
+      
+      
+      <button class="create-post-button">Create Post</button>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+
 </head>
 <body>
-    <h1 class="title is-1">Discussions</h1>
-    <section class="hero is-small is-success mb-4">
-        <div class="hero-body">
-            <h1 class="title is-1">Discussions</h1>
-        </div> 
-    </section>
 
-    <div class="container">
-        <div class="columns">
-        {% block content %}
+    <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border: 1px solid #ddd;
+        }
+        th {
+          background-color: #f2f2f2;
+          font-family: 'Quicksand', sans-serif;
+        }
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+      </style>
+      
+      <!-- Add this link to the <head> section of your HTML file -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+      
+      <tr>  {{ post.slug}}</a></tr>
 
-        {% endblock content%}
-        </div>
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th style="font-weight: bolder; color:black;">Title</th>
+            <th style="font-weight: bolder; color:black;">Username</th>
+            <th style="font-weight: bolder; color:black;">Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+          <tr>
+            <td><a href="post/{{post.slug}}/">{{ post.title }}</a></th>
+            <td>{{ post.user }}</th>
+            <td>{{post}}</th>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td>Example Title 2</td>
+            <td>username2</td>
+            <td>Example content for row 2</td>
+          </tr>
+          <tr>
+            <td>Example Title 3</td>
+            <td>username3</td>
+            <td>Example content for row 3</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
 </body>
 </html>
 
+{% endblock content%}
