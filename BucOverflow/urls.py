@@ -17,5 +17,6 @@ urlpatterns = [
     path("signin/", views.signin, name="signin"),
     path("logout/", views.logout, name="logout"),
     path("createpost", views.create_post, name="createpost"),
+    path("profile/<slug>/", views.profile, name="profile"),
      #url(r'^(?P<slug>[-\w]+)/$', views.post, name='post'),
 ]

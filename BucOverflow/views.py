@@ -38,6 +38,15 @@ def homeredirect():
     return HttpResponse.request
 
 
+def profile(request, slug):
+    #post = get_list_or_404
+     #post = Post.objects.filter(slug = slug)
+     profile = get_object_or_404(Author, slug=slug) #404 object not found
+
+     context = { 'profile' : profile,}
+
+     return render(request, "profile.html", context)
+
 def post(request, slug):
     #post = get_list_or_404
      #post = Post.objects.filter(slug = slug)

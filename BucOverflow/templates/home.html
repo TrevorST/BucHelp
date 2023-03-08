@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block content %}
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -11,19 +11,20 @@
     <title>BucOverflow</title>
 </head>
 <body>
-    <section class="hero is-small is-success mb-4">
+    <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
         <div class="hero-body">
-            <h1 class="title is-1">Home Page</h1>
+            <h1  class="title is-1">Home Page</h1>
         </div> 
     </section>
 
     <div class="container">
         <div class="columns">
-        {% block content %}
+        
 
-        {% endblock content%}
+        
         </div>
     </div>
 </body>
 </html>
 
+{% endblock content%}

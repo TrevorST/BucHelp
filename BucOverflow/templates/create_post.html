@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-<h1 style="text-align:center; margin-block:50px; color:black;">{{user}}, Write something</h1>
+
 
 <div class="hero is-fullheight">
+<h2 style="text-align:center; margin-block:5px; color:black;">{{user}}, Write something</h1>
+<h1 style="text-align:center">Post Creator</h2>
     <div class="hero-body is-justify-content-center is-align-items-center">
         <div class="columns is-flex is-flex-direction-column box">
-            <form method="POST" style="margin-left:150px;">
+            <form method="POST" style="margin-left:15px;">
                 {% csrf_token %}    
                 <div class="column">
                     <label for="title">title</label>
@@ -18,7 +20,7 @@
                     <textarea placeholder="Your content here" name="content" class="input"></textarea>
                 </div>
                     
-                <input type="submit" value="Save"  style="margin-block:50px;">
+                <input class="button is-primary" type="submit" value="Save"  style="margin-block:50px;">
             </form>
         </div>
     </div>
