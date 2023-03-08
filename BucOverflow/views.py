@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from .models import Post
 try:
     from django.core.urlresolvers import reverse
 except:
@@ -16,14 +17,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout as lt
-
-
-
-
-
-
-
-
 
 
 # Create your views here.
