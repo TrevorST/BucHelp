@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Author
+from django.contrib.auth.models import User
+from .forms import PostForm
 try:
     from django.core.urlresolvers import reverse
 except:
@@ -49,6 +51,26 @@ def discussions(request):
     posts = Post.objects.all()
     context = { 'posts' : posts,}
     return render(request, "discussions.html", context)
+
+@login_required
+def create_post(request):
+    context = {}
+    #use to check if our POST is valid
+    form = PostForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+             print("\n\n valid post!")
+             author = Author.objects.get(user=request.user)
+             new_post = form.save(commit=False)
+             new_post.user = author
+             new_post.save()
+             form.save_m2m()
+             return redirect("/home")
+    context.update({
+        "form": form,
+        "title": "OZONE: Create New Post"
+    })
+    return render(request, "create_post.html", context)
 
 
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<h1 style="text-align:center; margin-block:50px; color:black;">{{user}}, Write something</h1>
+
+<div class="hero is-fullheight">
+    <div class="hero-body is-justify-content-center is-align-items-center">
+        <div class="columns is-flex is-flex-direction-column box">
+            <form method="POST" style="margin-left:150px;">
+                {% csrf_token %}    
+                <div class="column">
+                    <label for="title">title</label>
+                    <!---name is used for django post--->
+                    <input class="input is-primary" name="title" type="title" placeholder="">
+                </div>
+                <div class="column">
+                    <label for="content">content</label>
+                    <textarea placeholder="Your content here" name="content" class="input"></textarea>
+                </div>
+                    
+                <input type="submit" value="Save"  style="margin-block:50px;">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
