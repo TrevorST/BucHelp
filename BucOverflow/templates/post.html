@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <a >Back</a>
     <h1 class="title is-1">post</h1>
+    <div class="post-container">
     <ul>
-        <li><h1>title:{{post.title}}</h1></li>
-        <li><a>content:{{post.content}}</a></li>
+        <div class="post-section">
+            <li class="post-title"><h1 class="title is-1">{{post.title}}</h1></li>
+            <li><a>content:{{post.content}}</a></li>
+        </div>
         <div class="comment-section"> <!-- needs to be a flex box column-->
              {% for comment in post.comments.all %}
             <div class="comment"> comment: {{ comment.content }}</div>
@@ -20,6 +23,7 @@
             {% endfor %}
         </div>
     </ul>
+    </div>  <!----POST-CONTAINER-->
     
 </body>
 </html>

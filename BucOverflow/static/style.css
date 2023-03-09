@@ -7,17 +7,16 @@
 
 .comment-section{
     color: #000;
-    margin-left: 15%;
-    margin-right: 15%;
+    
 }
 .post-section{
-
+    text-align: center;
+    margin-bottom: 10%;
 }
 .post-title{
-
+    margin-bottom: 5%;
 }
 .post-content{
-
 }
 
 .post-container{
@@ -31,5 +30,8 @@
     background-attachment: fixed;
     background-size:  cover;
     background-color: #999;
-}
 
+
+    margin-left: 15%;
+    margin-right: 15%;
+}
