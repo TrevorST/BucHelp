@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,7 @@
     <!-- Include the Bulma CSS framework for styling-->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+          <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>BucOverflow</title>
 </head>
 <body>
@@ -18,13 +20,11 @@
     </section>
 
     <div class="container">
-        <div class="columns">
-        
-
-        
-        </div>
+        <h1 class="texteffect" data-value="BUCOVERFLOW">BUCOVERFLOW</h1>
     </div>
 </body>
 </html>
+<script src="{% static 'script.js' %}">
 
+</script>
 {% endblock content%}
