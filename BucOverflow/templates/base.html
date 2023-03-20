@@ -25,11 +25,11 @@
      
 
       <a class="navbar-item" href="/bucoverflow/home"> <!--#######-->
-        Home 
+        Explore 
       </a>
 
       <a class="navbar-item" href="/bucoverflow/discussions"> <!--#######-->
-        Discussions 
+        My Discussions/Replies
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -59,6 +59,7 @@
       <div class="navbar-item">
         {% if not user.is_authenticated %}
         <div class="buttons">
+          <a class="button is-link">
           <a class="button is-primary"  href="/bucoverflow/signin">
             <strong>Sign up</strong>
           </a>
