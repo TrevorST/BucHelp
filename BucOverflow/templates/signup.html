@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+    <section style="background-color:  #041E42;" class="hero is-small is-success mb-4">
+        <div class="hero-body">
+            <h1 class="title is-1">Sign Up Page</h1>
+        </div> 
+    </section>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+{% endblock content%}
+
