@@ -24,6 +24,19 @@
     margin-right: 15%;
 }
 
+.has-bg-img { 
+    background-image: url(etsu_campus.jpg) ;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover;
+    background-color: #999;
+
+
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
 h1{
     color: black;
     font-size: 5rem;
