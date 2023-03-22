@@ -17,10 +17,12 @@
     margin-bottom: 5%;
 }
 .post-content{
+    
 }
 
 .post-container{
-
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .has-bg-img { 
@@ -34,4 +36,14 @@
 
     margin-left: 15%;
     margin-right: 15%;
+}
+
+h1{
+    color: black;
+    font-size: 5rem;
+    font-family: "Space Mono", monospace;
+}
+
+.container{
+    text-align: center;
 }

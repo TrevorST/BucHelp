@@ -8,6 +8,7 @@ from django.dispatch import receiver
 
 User = get_user_model()
 
+
 ##broken
 
 @receiver(post_save, sender=User)

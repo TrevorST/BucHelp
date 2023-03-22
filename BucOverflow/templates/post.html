@@ -7,8 +7,13 @@
 
 <body>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <a >Back</a>
-    <h1 class="title is-1">post</h1>
+    
+    <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
+        <div class="hero-body">
+            <h1  class="title is-1">Post</h1>
+        </div> 
+    </section>
+
     <div class="post-container">
     <ul>
         <div class="post-section">
@@ -19,12 +24,11 @@
              {% for comment in post.comments.all %}
             <div class="comment"> comment: {{ comment.content }}</div>
             <div>date: {{comment.created_at}}</div>
-            <div>{{ comment.user }}</div>
+            <div><a href="/profile/{{comment.user.slug}}/">{{ comment.user }}</a></div>
             {% endfor %}
         </div>
     </ul>
     </div>  <!----POST-CONTAINER-->
-    
 </body>
 </html>
 

@@ -1,11 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from .models import Post, Author
+from django.contrib.auth.models import User
+from .forms import PostForm
 try:
     from django.core.urlresolvers import reverse
 except:
     from django.urls import reverse
 from . import models
-from .models import Post
+from .forms import SignUpForm
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 
 ##REGISTRATION///LOGIN imports//
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -13,14 +19,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout as lt
-
-
-
-
-
-
-
-
 
 
 # Create your views here.
@@ -36,6 +34,18 @@ def index(request):
 def home(request):
     return render(request, "home.html")
 
+def homeredirect():
+    return HttpResponse.request
+
+
+def profile(request, slug):
+    #post = get_list_or_404
+     #post = Post.objects.filter(slug = slug)
+     profile = get_object_or_404(Author, slug=slug) #404 object not found
+
+     context = { 'profile' : profile,}
+
+     return render(request, "profile.html", context)
 
 def post(request, slug):
     #post = get_list_or_404
@@ -50,6 +60,26 @@ def discussions(request):
     posts = Post.objects.all()
     context = { 'posts' : posts,}
     return render(request, "discussions.html", context)
+
+@login_required
+def create_post(request):
+    context = {}
+    #use to check if our POST is valid
+    form = PostForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+             print("\n\n valid post!")
+             author = Author.objects.get(user=request.user)
+             new_post = form.save(commit=False)
+             new_post.user = author
+             new_post.save()
+             form.save_m2m()
+             return redirect("/home")
+    context.update({
+        "form": form,
+        "title": "OZONE: Create New Post"
+    })
+    return render(request, "create_post.html", context)
 
 
 
@@ -78,4 +108,9 @@ def signin(request):
 def logout(request):
     lt(request)
     return redirect("/home")
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = "signup.html"
+    success_url = reverse_lazy('BucOverflow:home')
 
