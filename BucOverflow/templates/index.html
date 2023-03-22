@@ -2,8 +2,10 @@
 {% block content %}
 {% load static %}
 
+
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,34 +18,43 @@
         <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/hero.css">
         <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+        
     </head>
 
-    <div class="bg-img">
+    <style>
+
+    .background {
+        background-position: center;
+        background-size: cover;
+        background-image: url("/static/etsu_campus.jpg");
+        min-height: 100%;
+    }
+
+    .title  {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        text-shadow: 2px 2px #000000;
+        font-size: 120px;
+    }
+
+    .description  {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        text-shadow: 2px 2px #000000;
+        font-size: 20px;
+    }
+
+    </style>
+
+        <header class="background w3-display-container w3-grayscale-min" id="home">
+            <div class="w3-display-left w3-text-white" style="padding:100px">
+                <h1 class="title">BucHelp</h1>
+                <p class="description">BucHelp is a post and reply based platform for individuals that need help at ETSU.</p>
+
+                <p><a href="/home" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn more</a></p>
+            </div> 
+        </header>
         
-    </div>
-
-    <body>
-        <section class="hero has-bg-img">
-            <div id="header-image-menu">
-                <img src="static/etsu_campus.jpg">
-                <h2 id = "image-text">
-                    A Basic Web Design course by GeeksforGeeks
-                </h2>
-            </div>
-
-            <div class="hero-body">   
-              <!-- <img src="{% static 'etsu_campus.jpg' %}" alt="My image"> -->
-                <div class="container has-text-centered">
-                    <h1 class="title">
-                    BucHelp
-                    </h1>
-                    <h1></h1>
-                    <h2 class="subtitle">
-                     BucHelp is a student created tool for everyone on ETSU's campus to connect and discuss issues and questions. 
-                    </h2>
-                </div>
-            </div>
-        </section>
         <section class="container">
             <div class="columns features">
                 <div class="column is-4">
@@ -68,7 +79,7 @@
                         <div class="card-content">
                             <div class="content">
                                 <h4>Reply To Posts</h4>
-                                <p>Help give insight, answers, and help to your fellow Bucs towards a resolution.</p>
+                                <p>Help give insight, answers, and help to your fellow Bucs towards a resolution. Reply and upvote the replies of others.</p>
                                 <p><a href="/bucoverflow/home">Learn more</a></p>
                             </div>
                         </div>
