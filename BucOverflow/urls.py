@@ -1,5 +1,4 @@
 from django.urls import path, include
-from django.conf.urls import url
 
 from . import views
 from .views import base, index, discussions, home, SignUpView
@@ -16,5 +15,7 @@ urlpatterns = [
     #path("signup/", views.signup, name="signup"),
     path("signin/", views.signin, name="signin"),
     path("logout/", views.logout, name="logout"),
+    path("createpost", views.create_post, name="createpost"),
+    path("profile/<slug>/", views.profile, name="profile"),
      #url(r'^(?P<slug>[-\w]+)/$', views.post, name='post'),
 ]

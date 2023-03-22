@@ -3,13 +3,17 @@
 
 
 <!DOCTYPE html>
-
+<title>BucHelp</title>
 <body>
   
-    <h1 class="title is-1">Discussions</h1>
+  <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
+    <div class="hero-body">
+        <h1  class="title is-1">Discussions</h1>
+    </div> 
+  </section>
 
     <style>
-        /* Define the button style */
+        /* Define button style */
         .create-post-button {
           background-color: #FF0000;
           color: white;
@@ -39,10 +43,7 @@
         }
       </style>
 
-      <button class="delete-post-button">Delete Post</button>
-      
-      
-      <button class="create-post-button">Create Post</button>
+      <a class="button is-primary" href="/bucoverflow/createpost"><strong>Create Post</strong></a>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 
@@ -62,13 +63,14 @@
         th {
           background-color: #f2f2f2;
           font-family: 'Quicksand', sans-serif;
+          font-weight: 300;
         }
         tr:nth-child(even) {
           background-color: #f2f2f2;
         }
       </style>
       
-      <!-- Add this link to the <head> section of your HTML file -->
+  
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
       
       <tr>  {{ post.slug}}</a></tr>
@@ -85,7 +87,7 @@
           {% for post in posts %}
           <tr>
             <td><a href="post/{{post.slug}}/">{{ post.title }}</a></th>
-            <td>{{ post.user }}</th>
+            <td><a href="profile/{{post.user.slug}}/">{{ post.user }}</a></th>
             <td>{{post}}</th>
           </tr>
           {% endfor %}

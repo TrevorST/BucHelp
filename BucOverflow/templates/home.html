@@ -1,29 +1,133 @@
 {% extends "base.html" %}
-
+{% block content %}
+{% load static %}
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include the Bulma CSS framework for styling-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <!-- Bulma Version 0.9.0-->
+        <link rel="stylesheet" type="text/css" href="../css/hero.css">
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+          <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>BucOverflow</title>
 </head>
+
 <body>
-    <section class="hero is-small is-success mb-4">
+    <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
         <div class="hero-body">
-            <h1 class="title is-1">Home Page</h1>
+            <h1  class="title is-1">Home Page</h1>
         </div> 
     </section>
 
     <div class="container">
-        <div class="columns">
-        {% block content %}
-
-        {% endblock content%}
-        </div>
+        <h1 class="texteffect" data-value="BUCOVERFLOW_">BUCOVERFLOW_</h1>
     </div>
+
+    <!---BULMA stuff-->
+    <section class="hero has-bg-img">
+      <div id="header-image-menu">
+          
+      </div>
+
+      <div class="hero-body">   
+        <!-- <img src="{% static 'etsu_campus.jpg' %}" alt="My image"> -->
+          <div class="container has-text-centered">
+              <h1></h1>
+              <h2 class="subtitle">
+               BucHelp is a student created tool for everyone on ETSU's campus to connect and discuss issues and questions. 
+              </h2>
+          </div>
+      </div>
+  </section>
+  <section class="container">
+      <div class="columns features">
+          <div class="column is-4">
+              <div class="card is-shady">
+                  <div class="card-image has-text-centered">
+                      <i class="fa fa-pencil"></i>
+                  </div>
+                  <div class="card-content">
+                      <div class="content">
+                          <h4>Create Posts </h4>
+                          <p>Join in with fellow Bucs to discuss ideas, questions, and concerns that you may encounter through your days on campus.</p>
+                          <p><a href="/bucoverflow/home">Learn more</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="column is-4">
+              <div class="card is-shady">
+                  <div class="card-image has-text-centered">
+                      <i class="fa fa-mail-reply"></i>
+                  </div>
+                  <div class="card-content">
+                      <div class="content">
+                          <h4>Reply To Posts</h4>
+                          <p>Help give insight, answers, and help to your fellow Bucs towards a resolution.</p>
+                          <p><a href="/bucoverflow/home">Learn more</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="column is-4">
+              <div class="card is-shady">
+                  <div class="card-image has-text-centered">
+                      <i class="fa fa-handshake-o"></i>
+                  </div>
+                  <div class="card-content">
+                      <div class="content">
+                          <h4> Solve Problems Together </h4>
+                          <p>Here at ETSU, we focus heavily on being a community and encourage eachother to reach out a helping hand when needed.</p>
+                          <p><a href="/bucoverflow/home">Learn more</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      
+          
+  </section>
+  <footer class="footer">
+      <div class="container">
+          <div class="columns">
+              <div class="column is-3 is-offset-2">
+                  <h2><strong>Category</strong></h2>
+                  <ul>
+                      <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                  </ul>
+              </div>
+              <div class="column is-3">
+                  <h2><strong>Category</strong></h2>
+                  <ul>
+                      <li><a href="#">Labore et dolore magna aliqua</a></li>
+                  </ul>
+              </div>
+              <div class="column is-4">
+                  <h2><strong>Category</strong></h2>
+                  <ul>
+                      <li><a href="#">Objects in space</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <script src="../js/bulma.js"></script>
+  </footer>
 </body>
 </html>
 
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+<h1 class="w3-margin w3-xlarge"></h1>
+</div>
+    <!---BULMA stuff-->
+</body>
+<script src="{% static 'script.js' %}">
+
+</script>
+{% endblock content%}
