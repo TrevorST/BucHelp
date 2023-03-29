@@ -31,6 +31,15 @@ def base(request):
 def home(request):
     return render(request, "home.html")
 
+def about(request):
+    return render(request, "about.html")
+
+def ourteam(request):
+    return render(request, "ourteam.html")
+
+def report(request):
+    return render(request, "report.html")
+
 def homeredirect():
     return HttpResponse.request
 

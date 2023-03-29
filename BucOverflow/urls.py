@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from . import views
-from .views import base, discussions, home, SignUpView
+from .views import base, discussions, home, about, ourteam, report, SignUpView
 
 app_name = "BucOverflow"
 
@@ -9,6 +9,9 @@ urlpatterns = [
     path("", views.home, name="base"),
     path("discussions", views.discussions, name="discussions"),
     path("home", views.home, name="home"),
+    path("about", views.about, name="about"),
+    path("ourteam", views.ourteam, name="ourteam"),
+    path("report", views.report, name="report"),
     path("signup", SignUpView.as_view(), name="signup"),
     path("post/<slug>/", views.post, name="post"),
     #path("signup/", views.signup, name="signup"),

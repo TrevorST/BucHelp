@@ -2,8 +2,14 @@
 <!----  #041E42 #FFC72C -->
 <html lang="en">
   <style>
+
+.site-footer {
+  background: #00003d;
+  height: 100px;
+}
+
     body {background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #FFF 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;
-            height: 100vh;}
+          height: 100vh;}
   
   </style>
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
@@ -29,27 +35,20 @@
         Explore 
       </a>
 
-      <a class="navbar-item" href="/bucoverflow/discussions"> <!--#######-->
-        My Discussions/Replies
-      </a>
-
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <a class="navbar-item" href="/bucoverflow/about">
             About
           </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
+          <a class="navbar-item" href="/bucoverflow/ourteam">
+            Our Team
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
+          <a class="navbar-item" href="/bucoverflow/report">
             Report an issue
           </a>
         </div>
@@ -91,7 +90,33 @@
 {% endblock content%}
 <section>
   <img src="{% static 'mountains.svg' %}">
-  <div style="min-height: 40vh; background-color: 00013b;"><strong></strong></div>
+  <div style><strong>
+    <footer class="site-footer">
+      <div class="container">
+          <div class="columns">
+              <div class="column is-3 is-offset-2">
+                  <string style="color:white;">Explore</strong>
+                  <ul>
+                      <li><a href="/bucoverflow/discussions">Read and create posts</a></li>
+                  </ul>
+              </div>
+              <div class="column is-3">
+                  <strong style="color:white;">About</strong>
+                  <ul>
+                      <li><a href="/bucoverflow/about">Learn about our application</a></li>
+                  </ul>
+              </div>
+              <div class="column is-4">
+                  <strong style="color:white;">Our Team</strong>
+                  <ul>
+                      <li><a href="/bucoverflow/ourteam">Learn about our team</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <script src="../js/bulma.js"></script>
+  </footer>
+  </strong></div>
 </section>
 </body>
 </html>
