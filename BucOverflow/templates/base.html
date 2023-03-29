@@ -8,7 +8,7 @@
   height: 100px;
 }
 
-    body {background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #FFF 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;
+    body {background-color: #16dc31; background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #FFF 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;
           height: 100vh;}
   
   </style>
@@ -59,7 +59,7 @@
       <div class="navbar-item">
         {% if not user.is_authenticated %}
         <div class="buttons">
-          <a href="/bucoverflow/signup" class="button is-primary">
+          <a href="/bucoverflow/signup" class="button is-info">
             <strong>Sign up</strong>
           </a>
           <a class="button is-light" href="/bucoverflow/signin">
@@ -86,6 +86,7 @@
         href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
 <body>
+  
 {% block content %}
 {% endblock content%}
 <section>
