@@ -1,17 +1,17 @@
 {% load static %}
-<!----  #041E42 #FFC72C -->
 <html lang="en">
-  <style>
+
+<style>
 
 .site-footer {
   background: #00003d;
   height: 100px;
 }
 
-    body {background-color: #16dc31; background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #FFF 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;
-          height: 100vh;}
+body {background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #ffffff 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;}
   
-  </style>
+</style>
+
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
   <nav style="background-color: #FFc72c;" class="navbar is-warning" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -86,39 +86,38 @@
         href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
 <body>
-  
+
 {% block content %}
 {% endblock content%}
-<section>
-  <img src="{% static 'mountains.svg' %}">
-  <div style><strong>
-    <footer class="site-footer">
-      <div class="container">
-          <div class="columns">
-              <div class="column is-3 is-offset-2">
-                  <string style="color:white;">Explore</strong>
-                  <ul>
-                      <li><a href="/bucoverflow/discussions">Read and create posts</a></li>
-                  </ul>
-              </div>
-              <div class="column is-3">
-                  <strong style="color:white;">About</strong>
-                  <ul>
-                      <li><a href="/bucoverflow/about">Learn about our application</a></li>
-                  </ul>
-              </div>
-              <div class="column is-4">
-                  <strong style="color:white;">Our Team</strong>
-                  <ul>
-                      <li><a href="/bucoverflow/ourteam">Learn about our team</a></li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-      <script src="../js/bulma.js"></script>
-  </footer>
-  </strong></div>
-</section>
+
+<img src="{% static 'mountains.svg' %}">
+<div style><strong>
+  <footer class="site-footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3 is-offset-2">
+                <string style="color:white;">Explore</strong>
+                <ul>
+                    <li><a href="/bucoverflow/discussions">Read and create posts</a></li>
+                </ul>
+            </div>
+            <div class="column is-3">
+                <strong style="color:white;">About</strong>
+                <ul>
+                    <li><a href="/bucoverflow/about">Learn about our application</a></li>
+                </ul>
+            </div>
+            <div class="column is-4">
+                <strong style="color:white;">Our Team</strong>
+                <ul>
+                    <li><a href="/bucoverflow/ourteam">Learn about our team</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="../js/bulma.js"></script>
+</footer>
+</strong></div>
 </body>
 </html>
 
