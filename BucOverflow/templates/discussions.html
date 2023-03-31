@@ -13,97 +13,15 @@
     </div> 
   </section>
 
-    <style>
-        /* Define button style */
-        .create-post-button {
-          background-color: #FF0000;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          font-weight: bold;
-          border-radius: 5px;
-        }
-      </style>
-
-      <style>
-        .delete-post-button {
-            background-color: #00d1b2;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-      </style>
-
-      <a class="button is-primary" href="/bucoverflow/createpost"><strong>Create Post</strong></a>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
-
-</head>
-<body>
-
-    <style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 8px;
-          text-align: left;
-          border: 1px solid #ddd;
-        }
-        th {
-          background-color: #f2f2f2;
-          font-family: 'Quicksand', sans-serif;
-          font-weight: 300;
-        }
-        tr:nth-child(even) {
-          background-color: #f2f2f2;
-        }
-      </style>
-      
-  
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
-      
-      <tr>  {{ post.slug}}</a></tr>
-
-      <table>
-        <thead>
-          <tr>
-            <th style="font-weight: bolder; color:black;">Title</th>
-            <th style="font-weight: bolder; color:black;">Username</th>
-            <th style="font-weight: bolder; color:black;">Content</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for post in posts %}
-          <tr>
-            <td><a href="post/{{post.slug}}/">{{ post.title }}</a></th>
-            <td><a href="profile/{{post.user.slug}}/">{{ post.user }}</a></th>
-            <td>{{post}}</th>
-          </tr>
-          {% endfor %}
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
-
-      <br><br><br><br><br><br>
-
-
 
 
       <section class="container">
         <div class="columns">
             <div class="column is-2">
+              <a class="button is-primary is-block is-alt is-large" href="/bucoverflow/createpost">New Post</a>
+              <div class="box content">
+                <h1>Meme of the Day</h1>
+              </div>
 
             </div>
             <div class="column is-9">
@@ -115,9 +33,9 @@
                     <div class="media-content"></div>
                     <div class="media-right"><p>{{ post.created_at }}</p></div>
                   </div>
-                  <h4>{{ post.title }} <span class="tag is-primary is-medium ">Tag example</span> </h4>
+                  <h4><a href="post/{{post.slug}}/">{{ post.title }}</a> <span class="tag is-primary is-medium ">Tag example</span> </h4>
                   <p>{{post}}</p>
-
+                  {% if post.comments.all.0 %}
                   <div class="media">
                     <div class="media-left">
                       <p class="image is-32x32">
@@ -128,124 +46,24 @@
                     <div class="media-content">
                       <div class="content">
                         <p>
-                          <a href="#">@jsmith</a> {{ post.comments.0 }} replied &nbsp;
+                          <a href="profile/{{post.comments.all.0.user.slug }}/">{{ post.comments.all.0.user }}</a> replied {{post.comments.all.0.created_at}}  &nbsp;
                           <span class="tag">Question</span>
                         </p>
                       </div>
                     </div>
                     <div class="media-right">
-                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1 comment(s)</span>
+                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> {{ post.comments.all.count }} comment(s)</span>
                     </div>
                   </div>
                   <div class="media"></div>
+                  {% else %}
+                  <div class="media"></div>
+                  <div class="media"></div>
+                  {% endif  %}
                 </article>
 
                 {% endfor %}
-                <article class="post">
-                  <h4>How can I make a bulma button go full width?</h4>
-                  <div class="media">
-                    <div class="media-left">
-                      <p class="image is-32x32">
-                        <img src="http://bulma.io/images/placeholders/128x128.png">
-                      </p>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <a href="#">@red</a> replied 40 minutes ago &nbsp;
-                          <span class="tag">Question</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
-                    </div>
-                  </div>
-                </article>
-                <article class="post">
-                  <h4>TypeError: Data must be a string or a buffer when trying touse vue-bulma-tabs</h4>
-                  <div class="media">
-                    <div class="media-left">
-                      <p class="image is-32x32">
-                        <img src="http://bulma.io/images/placeholders/128x128.png">
-                      </p>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <a href="#">@jsmith</a> replied 53 minutes ago &nbsp;
-                          <span class="tag">Question</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> 13</span>
-                    </div>
-                  </div>
-                </article>
-                <article class="post">
-                  <h4>How to vertically center elements in Bulma?</h4>
-                  <div class="media">
-                    <div class="media-left">
-                      <p class="image is-32x32">
-                        <img src="http://bulma.io/images/placeholders/128x128.png">
-                      </p>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <a href="#">@brown</a> replied 3 hours ago &nbsp;
-                          <span class="tag">Question</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-                    </div>
-                  </div>
-                </article>
-                <article class="post">
-                  <h4>I'm trying to use hamburger menu on bulma css, but it doesn't work. What is wrong?</h4>
-                  <div class="media">
-                    <div class="media-left">
-                      <p class="image is-32x32">
-                        <img src="http://bulma.io/images/placeholders/128x128.png">
-                      </p>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <a href="#">@hamburgler</a> replied 5 hours ago &nbsp;
-                          <span class="tag">Question</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-                    </div>
-                  </div>
-                </article>
-                <article class="post">
-                  <h4>How to make tiles wrap with Bulma CSS?</h4>
-                  <div class="media">
-                    <div class="media-left">
-                      <p class="image is-32x32">
-                        <img src="http://bulma.io/images/placeholders/128x128.png">
-                      </p>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <a href="#">@rapper</a> replied 3 hours ago &nbsp;
-                          <span class="tag">Question</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="media-right">
-                      <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-                    </div>
-                  </div>
-                </article>
+               
               </div>
           </div>
         </div>

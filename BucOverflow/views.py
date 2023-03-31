@@ -79,7 +79,7 @@ def discussions(request):
     context = { 'posts' : posts,}
     return render(request, "discussions.html", context)
 
-@login_required
+@login_required(login_url='/signin/')
 def create_post(request):
     context = {}
     #use to check if our POST is valid
