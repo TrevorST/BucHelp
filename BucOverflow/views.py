@@ -2,13 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Post, Author
 from django.contrib.auth.models import User
-from .forms import PostForm
 try:
     from django.core.urlresolvers import reverse
 except:
     from django.urls import reverse
 from . import models
-from .forms import SignUpForm
+from .forms import SignUpForm, PostForm, CommentForm
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -58,6 +57,19 @@ def post(request, slug):
      #post = Post.objects.filter(slug = slug)
      post = get_object_or_404(Post, slug=slug) #404 object not found
 
+     form = CommentForm(request.POST or None)
+     if request.method == "POST":
+        if form.is_valid():
+            #get the post
+            post = Post.objects.get(slug=slug)
+            print("\n\n valid post!")
+            author = Author.objects.get(user=request.user)
+            new_comment = form.save(commit=False)
+            new_comment.user = author
+            new_comment.save()
+            post.comments.add(new_comment)
+            form.save_m2m()
+
      context = { 'post' : post,}
 
      return render(request, "post.html", context)
@@ -83,7 +95,7 @@ def create_post(request):
              return redirect("/home")
     context.update({
         "form": form,
-        "title": "OZONE: Create New Post"
+        "title": "Create New Post"
     })
     return render(request, "create_post.html", context)
 
