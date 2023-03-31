@@ -9,7 +9,16 @@
   
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-        <h1  class="title is-1">Discussions</h1>
+    <h1  class="title is-3">Discussions</h1>
+    <form class="search-form">
+      <input type="text" placeholder="Search...">
+      <button type="submit">Go</button>
+      <span class="hashtag" style="background-color: #F44336">#tag1</span>
+      <span class="hashtag" style="background-color: #E91E63">#tag2</span>
+      <span class="hashtag" style="background-color: #9C27B0">#tag3</span>
+      <span class="hashtag" style="background-color: #673AB7">#tag4</span>
+      <span class="hashtag" style="background-color: #3F51B5">#tag5</span>
+    </form>
     </div> 
   </section>
 
@@ -68,6 +77,108 @@
           </div>
         </div>
       </section>
+<style>
+  .search-form {
+  float: left;
+  margin-top: 10px;
+  }
+
+  .hashtags {
+   display: inline-block;
+   margin: 5px 0;
+  }
+
+  .hashtag {
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+  }
+    /* Define button style */
+  .create-post-button {
+  background-color: #FF0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  }
+</style>
+
+<style>
+  .delete-post-button {
+  background-color: #00d1b2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  }
+</style>
+
+    <a class="button is-primary" href="/bucoverflow/createpost"><strong>Create Post</strong></a>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+
+</head>
+<body>
+    <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border: 1px solid #ddd;
+        }
+        th {
+          background-color: #f2f2f2;
+          font-family: 'Quicksand', sans-serif;
+          font-weight: 300;
+        }
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+      </style>
+      
+  
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+      
+      <tr>  {{ post.slug}}</a></tr>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="font-weight: bolder; color:black;">Title</th>
+            <th style="font-weight: bolder; color:black;">Username</th>
+            <th style="font-weight: bolder; color:black;">Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+          <tr>
+            <td><a href="post/{{post.slug}}/">{{ post.title }}</a></th>
+            <td><a href="profile/{{post.user.slug}}/">{{ post.user }}</a></th>
+            <td>{{post}}</th>
+          </tr>
+          {% endfor %}
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+
+      <br><br><br><br><br><br>
 </body>
 </html>
 
