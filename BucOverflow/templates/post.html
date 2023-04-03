@@ -28,6 +28,15 @@
             {% endfor %}
         </div>
     </ul>
+
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                    <label for="content">content</label>
+                    <textarea placeholder="Your content here" name="content" class="input"></textarea>                    
+                <input class="button is-primary" type="submit" value="Submit"  style="margin-block:50px;">   
+            </form>
+        </div>
     </div>  <!----POST-CONTAINER-->
 </body>
 </html>

@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="../css/hero.css">
         <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
         
+        
     </head>
 
     <style>
@@ -35,7 +36,8 @@
         color: rgb(255, 255, 255);
         text-shadow: 2px 2px #000000;
         font-size: 120px;
-        font-family:"Raleway", sans-serif;
+        /*font-family:"Raleway", sans-serif;*/
+        font-family: "Space Mono", monospace;
     }
 
     .description  {
@@ -53,8 +55,8 @@
 
         <header class="background w3-display-container w3-grayscale-min" id="myheader">
             <div class="w3-display-left w3-text-white" style="padding:100px">
-                <h1 class="title">BucHelp</h1>
-                <p class="description">BucHelp is a post and reply based platform for individuals that need help at ETSU.</p>
+                <h1  class="texteffect title" data-value="BUCOVERFLOW_">BUCOVERFLOW_</h1>
+                <p class="description">BucOverflow is an extension of BucHelp, is a post and reply based platform for individuals that need help at ETSU.</p>
                 <p style="text-align: center;"><a href="/bucoverflow/discussions" style="color:#789aea; text-shadow: 2px 2px #131353;">Learn more</a></p>
             </div>     
         </header>
@@ -113,5 +115,5 @@
 </html> 
 
 </body>
-
+<script src="{% static 'script.js' %}"></script>
 {% endblock content%}
