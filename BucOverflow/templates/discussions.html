@@ -7,9 +7,44 @@
 <title>BucOverflow</title>
 <body>
   <link rel="stylesheet" type='text/css' href="{% static 'vote.css' %}">
+
+  <style>
+    .search-form {
+    float: left;
+    margin-top: 10px;
+    }
+  
+    .hashtags {
+     display: inline-block;
+     margin: 5px 0;
+    }
+  
+    .hashtag {
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+    }
+    
+
+
+
+
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-        <h1  class="title is-1">Discussions</h1>
+    <h1  class="title is-3">Discussions</h1>
+    <form class="search-form">
+      <input type="text" placeholder="Search...">
+      <button type="submit">Go</button>
+      <span class="hashtag" style="background-color: #F44336">#tag1</span>
+      <span class="hashtag" style="background-color: #E91E63">#tag2</span>
+      <span class="hashtag" style="background-color: #9C27B0">#tag3</span>
+      <span class="hashtag" style="background-color: #673AB7">#tag4</span>
+      <span class="hashtag" style="background-color: #3F51B5">#tag5</span>
+    </form>
     </div> 
   </section>
 
@@ -81,6 +116,7 @@
         </div>  <!--Column 9-->
     </div>  <!---Columns-->
   </section>
+
 
 
 
