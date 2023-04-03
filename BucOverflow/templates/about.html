@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
   
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-        <h1  class="title is-1">About</h1>
+        <h1  class="texteffect title" data-value="About">About</h1>
     </div> 
   </section>
  
@@ -49,5 +50,6 @@
   </div>
 </body>
 
+<script src="{% static 'script.js' %}"></script>
 
 {% endblock content%}
