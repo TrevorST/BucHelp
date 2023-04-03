@@ -26,6 +26,20 @@ class Author(models.Model):
     def __str__(self):
         return self.user.username
 
+    def getKarma(self):
+        karma=0
+        posts=Post.objects.filter(user=self)
+        comments=Comment.objects.filter(user=self)
+        for post in posts:
+            karma += post.karma
+        for comment in comments:
+            karma += comment.karma
+
+        self.karma = karma
+
+
+
+
     @property
     def num_posts(self):
         return Post.objects.filter(user=self).count()
@@ -52,6 +66,7 @@ class Comment(models.Model):
     content  = models.TextField(blank=True,max_length=10000, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     replies = models.ManyToManyField(Reply, blank=True)
+    karma = models.IntegerField(default=0)
     #reply_count
 
     def __str__(self):
@@ -66,6 +81,7 @@ class Post(models.Model):
     content = models.TextField(blank=True,max_length=10000, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     comments = models.ManyToManyField(Comment, blank=True)
+    karma = models.IntegerField(default=0)
     
 
     def save(self, *args, **kwargs):

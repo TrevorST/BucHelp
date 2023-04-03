@@ -1,101 +1,126 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load static %}
 
 <!DOCTYPE html>
 <title>BucHelp</title>
 <body>
+  <link rel="stylesheet" type='text/css' href="{% static 'vote.css' %}">
+
+  <style>
+    .search-form {
+    float: left;
+    margin-top: 10px;
+    }
   
+    .hashtags {
+     display: inline-block;
+     margin: 5px 0;
+    }
+  
+    .hashtag {
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+    }
+    
+  </style>
+
+
+
+
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-        <h1  class="title is-1">Discussions</h1>
+    <h1  class="title is-3">Discussions</h1>
+    <form class="search-form">
+      <input type="text" placeholder="Search...">
+      <button type="submit">Go</button>
+      <span class="hashtag" style="background-color: #F44336">#tag1</span>
+      <span class="hashtag" style="background-color: #E91E63">#tag2</span>
+      <span class="hashtag" style="background-color: #9C27B0">#tag3</span>
+      <span class="hashtag" style="background-color: #673AB7">#tag4</span>
+      <span class="hashtag" style="background-color: #3F51B5">#tag5</span>
+    </form>
     </div> 
   </section>
 
-    <style>
-        /* Define button style */
-        .create-post-button {
-          background-color: #FF0000;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          font-weight: bold;
-          border-radius: 5px;
-        }
-      </style>
 
-      <style>
-        .delete-post-button {
-            background-color: #00d1b2;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-      </style>
 
-      <a class="button is-info" href="/bucoverflow/createpost"><strong>Create Post</strong></a>
+  <section class="container">
+    <div class="columns">
+          <!---Meme of the day microservice-->
+            <div class="column is-2">
+              <a class="button is-primary is-block is-alt is-large" href="/bucoverflow/createpost">New Post</a>
+              <div class="box content">
+                <h1>Meme of the Day</h1>
+              </div>
+            </div>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 
-</head>
-<body>
 
-    <style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 8px;
-          text-align: left;
-          border: 1px solid #ddd;
-        }
-        th {
-          background-color: #f2f2f2;
-          font-family: 'Quicksand', sans-serif;
-          font-weight: 300;
-        }
-        tr:nth-child(even) {
-          background-color: #f2f2f2;
-        }
-      </style>
-      
-  
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
-      
-      <tr>  {{ post.slug}}</a></tr>
-
-      <table>
-        <thead>
-          <tr>
-            <th style="font-weight: bolder; color:black;">Title</th>
-            <th style="font-weight: bolder; color:black;">Username</th>
-            <th style="font-weight: bolder; color:black;">Content</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="column is-9">
+        <div class="box content">
           {% for post in posts %}
-          <tr>
-            <td><a href="post/{{post.slug}}/">{{ post.title }}</a></th>
-            <td><a href="profile/{{post.user.slug}}/">{{ post.user }}</a></th>
-            <td>{{post}}</th>
-          </tr>
-          {% endfor %}
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
+          <article class="post" style="padding-bottom: 25px;">
+            <div class="columns">
+              <div class="coulmn is-2">
+                <div style="display: flex; flex-direction: column;">
+                  <span class="vote_up_off"></span>
+                  <div style="padding-left: 20px;"> {{ post.karma }} </div>
+                  <span class="vote_down_off"></span>
+                </div>
+              </div>
 
-      <br><br><br><br><br><br>
+              <div class="column">
+                        <div class="media">
+                          <div class="media-left"><p>posted by <a href="profile/{{post.user.slug}}/">{{ post.user }}</a></p></div>
+                          <div class="media-content"></div>
+                          <div class="media-right"><p>{{ post.created_at }}</p></div>
+                        </div>
+                        <h4><a href="post/{{post.slug}}/">{{ post.title }}</a> <span class="tag is-primary is-medium ">Tag example</span> </h4>
+                        <p>{{post}}</p>
+                        {% if post.comments.all.0 %}
+                        <div class="media">
+                          <div class="media-left">
+                            <p class="image is-32x32">
+                              <!---<img src="http://bulma.io/images/placeholders/128x128.png">-->
+                              <img style="border-radius: 50%;" src="{% static 'profile.jpg' %}"  width="112" height="112">
+                            </p>
+                          </div>
+                          <div class="media-content">
+                            <div class="content">
+                              <p>
+                                <a href="profile/{{post.comments.all.0.user.slug }}/">{{ post.comments.all.0.user }}</a> replied {{post.comments.all.0.created_at}}  &nbsp;
+                                <span class="tag">Question</span>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="media-right">
+                            <span class="has-text-grey-light"><i class="fa fa-comments"></i> {{ post.comments.all.count }} comment(s)</span>
+                          </div>
+                        </div>
+                        <div class="media"></div>
+                        {% else %}
+                        <div class="media"></div>
+                        <div class="media"></div>
+                        {% endif  %}
+              </div> <!--Column 7-->
+            </div><!--columns 2-->
+            </article>
+            {% endfor %}
+          </div>  <!---Box Content-->
+        </div>  <!--Column 9-->
+    </div>  <!---Columns-->
+  </section>
+
+
+
+
+
 </body>
 </html>
 
