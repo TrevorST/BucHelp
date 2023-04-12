@@ -2,6 +2,11 @@
 {% block content %}
 {% load static %}
 
+<!--
+  This page functions as a feedback/report page. The user can submit their experience with different 
+  emotion faces and then submit a string response through a textbox
+-->
+
 <!DOCTYPE html>
 <title>Report</title>
 
@@ -14,13 +19,36 @@
 <script src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
 <style>
 
+/* CSS for feedback images*/
+.ratings img{
+    cursor:pointer;
+    transition:all 0.5s;
+    filter:grayscale();
+    margin: 10px;
+    height: 130px; 
+    width: 130px;   
+}
+
+/* CSS for feedback images hover effect*/
+.ratings img:hover{
+   transform: scale(1.2);
+   filter:none;
+}
+
+.transform{
+  filter:grayscale();
+}
 
 </style>
 
 
-
+<!--
+  Start of HTML section of code. The user can submit their experience with different 
+  emotion faces and then submit a string response through a textbox
+-->
 <body>
   
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
@@ -36,15 +64,40 @@
       <div class="w3-col m15">
         <div class="w3-card w3-round w3-white">
           <div class="w3-container w3-padding" style="height:auto">
-            <h6 style="font-size: 20px"; >Provide feedback or report issues:</h6> <br>
 
+
+            <!--Top-half of the white feedback box-->
+            <h6 style="font-size: 20px"; >Rate your experience:</h6> <br>
+            <div class="ratings" style="text-align: center; column-count: 5; column-width:auto; margin-left: 90px; margin-right: 90px;">
+
+              <div class="column">
+                <img src="/static/feedback-faces/kinser-face.jpg">
+              </div>
+              <div class="column">
+                <img src="/static/feedback-faces/slightly_sad.jpg">
+              </div>
+              <div class="column">
+                <img src="/static/feedback-faces/neutral.jpg">
+              </div>
+              <div class="column">
+                <img src="/static/feedback-faces/slightly_happy.jpg">
+              </div>
+              <div class="column">
+                <img src="/static/feedback-faces/happy-new.jpg">
+              </div>
+            </div> <br> <br>
+
+
+            <!--Bottom-half of the white feedback box-->
+            <h6 style="font-size: 20px"; >Provide feedback or report issues:</h6> <br>
             <div class="field is-horizontal" style="width:auto">
               <div class="field-body">
                 <div class="field">
                   <div class="control">
                     <textarea class="textarea" rows="7" placeholder="Type here:"></textarea>
                   </div> <br>
-                  <button class="js-modal-trigger" input type="reset" data-target="modal-js-example" style="background-color: #023479; color:#ffffff" >
+                  <button class="js-modal-trigger" input type="reset" data-target="modal-js-example" style="background-color: #023479; 
+                                color:#ffffff; border-radius: 8px; padding-left: 7px; padding-right: 7px">
                     Submit
                   </button>
                 </div>
@@ -54,7 +107,7 @@
             <div id="modal-js-example" class="modal">
               <div class="modal-background"></div>
                 <div class="modal-content">
-                  <div class="box" style="margin: 0 auto; width:fit-content; text-align: center;">
+                  <div class="box" style="margin: 0 auto; width:fit-content; text-align: center; font-size: large;">
                     <p>Thank you for the feedback!</p>
                     <!-- Your content -->
                   </div>
@@ -67,14 +120,9 @@
     </div>
   </form>
 
-
-
 </body>
 </html>
-
- <br><br><br><br><br>
-
- <script src="{% static 'script.js' %}"></script>
+ <br>
 
  <!--
   Submit button script functionality
@@ -90,6 +138,7 @@
 
       function closeModal($el) {
         $el.classList.remove('is-active');
+        window.location.href=("home");
       }
 
       function closeAllModals() {
@@ -128,6 +177,18 @@
     });
  </script>
 
-</body>
+<!--
+  This script handles the feedback image filter based on the click. It also unhighlights 
+  each selection when a new selection is made
+
+  Source: Alec made dis shi baby letz goooooo!
+-->
+
+<script>
+  $(".ratings img").click(function(){
+      $(".ratings img").css("filter", "grayscale()");
+    $(this).css("filter", "none");
+  });
+</script>
 
 {% endblock content%}
