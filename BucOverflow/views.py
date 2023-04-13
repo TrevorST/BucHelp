@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.template.loader import render_to_string
 from .models import Post, Author
 from django.contrib.auth.models import User
 try:
@@ -76,7 +77,39 @@ def post(request, slug):
 
 def discussions(request):
     posts = Post.objects.all()
-    context = { 'posts' : posts,}
+    postsliked = []
+    postsdisliked = []
+    if request.user.is_authenticated:  # Notice this condition
+        #now get the author or current user
+        author = Author.objects.get(user=request.user)
+        for post in posts:
+            #update karma for posts
+            post.update_karma()
+            post.save()
+            #if user has liked this post
+            if post.likes.filter(user=author.user).exists(): #might need to overwrite author equals val
+                postsliked.append(post.id) 
+            if post.dislikes.filter(user=author.user).exists(): #might need to overwrite author equals val
+                postsdisliked.append(post.id) 
+            comments = post.comments.all()
+            for comment in comments:
+                comment.getTimeElapsed()
+                comment.save()
+    else: #user is not autheticated aka signed in
+        for post in posts:
+             #update karma for posts
+            post.update_karma()
+            post.save()
+            comments = post.comments.all()
+            for comment in comments:
+                comment.getTimeElapsed()
+                comment.save()
+
+    test=search(posts, "laundry")
+    print(test)
+    context = { 'posts' : posts,
+                'postsliked' : postsliked,
+                'postsdisliked' : postsdisliked}
     return render(request, "discussions.html", context)
 
 @login_required(login_url='/signin/')
@@ -132,3 +165,72 @@ class SignUpView(generic.CreateView):
     template_name = "signup.html"
     success_url = reverse_lazy('BucOverflow:home')
 
+
+#user likes post
+@login_required(login_url='/signin/')
+def like_post(request):
+    #use id from ajax post
+    post = get_object_or_404(Post, id=request.POST.get('id')) #404 object not found 
+
+    #now get the author that liked the post
+    author = Author.objects.get(user=request.user)
+
+    is_liked = False
+    if post.likes.filter(id=author.id).exists():
+        post.likes.remove(author)
+        is_liked = False
+    else:
+        post.likes.add(author)
+        is_liked = True
+        #check if they had it disliked
+        if post.dislikes.filter(id=author.id).exists():
+            post.dislikes.remove(author)
+
+    post.save()
+    #context = { 'posts' : posts,}
+    return render(request, "discussions.html")
+
+    #user dislikes post
+@login_required(login_url='/signin/')
+def dislike_post(request):
+    #use id from ajax post
+    post = get_object_or_404(Post, id=request.POST.get('id')) #404 object not found 
+
+    #now get the author that liked the post
+    author = Author.objects.get(user=request.user)
+
+    is_disliked = False
+    if post.dislikes.filter(id=author.id).exists():
+        post.dislikes.remove(author)
+        is_disliked = False
+    else:
+        post.dislikes.add(author)
+        is_disliked = True
+        #check if they had it liked
+        if post.likes.filter(id=author.id).exists():
+            post.likes.remove(author)
+
+    post.save()
+    return render(request, "discussions.html")
+
+#return sorted list
+def search(posts, search):
+    count = 0
+    highestCount = 0
+    mostRelevantPost= posts[0]
+    temp=""
+    for post in posts:
+        count = 0
+        #for each post object get the number of matches
+        for element in post.title:
+            #do not exceede search string length
+            if(count<len(search)):
+                if(search[count] == element):
+                    count += 1
+        if count > highestCount:
+            highestCount = count
+            mostRelevantPost = post
+            
+    return mostRelevantPost
+
+        

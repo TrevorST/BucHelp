@@ -6,6 +6,8 @@ from django.utils.text import slugify
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import datetime, timedelta
+from django.utils.timezone import utc
+import math
 
 User = get_user_model()
 
@@ -51,6 +53,10 @@ class Author(models.Model):
             self.slug = slugify(self.fullname)
         super(Author, self).save(*args, **kwargs)
 
+
+
+
+
 class Reply(models.Model):
     #default poster is anon
     user = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -68,13 +74,27 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     replies = models.ManyToManyField(Reply, blank=True)
     karma = models.IntegerField(default=0)
+    timeElapsed= models.TextField(default="just now")
     #reply_count
 
-    @property
-    def timeElapsed(self):
-        now = datetime.now()
-        time = now - self.created_at
-        return time.min
+    def getTimeElapsed(self):
+        now = datetime.utcnow().replace(tzinfo=utc)
+        timediff = now - self.created_at
+        seconds=math.floor(timediff.total_seconds())
+
+        if seconds < 60:
+            self.timeElapsed = str(seconds) + " seconds ago"
+        elif seconds < 3600:    #minutes
+            minutes = seconds // 60 # // discards fractional remainder
+            self.timeElapsed = str(minutes) + " minute ago" if minutes == 1 else str(minutes) + " minutes ago"
+        elif seconds < 86400:   #hours
+            hours = seconds // 3600
+            self.timeElapsed = str(hours) + " hour ago" if hours == 1 else str(hours) + " hours ago"
+        else:       #days
+            days = seconds // 86400
+            self.timeElapsed = str(days) + " day ago" if days == 1 else str(days) + " days ago"
+
+
     def __str__(self):
         return self.content[:100]
     
@@ -87,8 +107,20 @@ class Post(models.Model):
     content = models.TextField(blank=True,max_length=10000, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     comments = models.ManyToManyField(Comment, blank=True)
+
+    likes = models.ManyToManyField(Author, blank=True, related_name='likes')
+    dislikes = models.ManyToManyField(Author, blank=True, related_name='dislikes')
     karma = models.IntegerField(default=0)
     
+
+    def get_total_likes(self):
+        return self.likes.count()
+
+    def get_total_dislikes(self):
+        return self.dislikes.count()
+
+    def update_karma(self):
+        self.karma = self.likes.count() - self.dislikes.count()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -109,3 +141,13 @@ class Post(models.Model):
         })
 
 
+#class LikePost(models.Model):
+    #stores likes in Post
+    #related name does a backwards relation from Post back to LikePost
+    #basically a Post object with a LikePost object attached to it
+#    post = models.OneToOneField(Post, related_name="likes_post", on_delete=models.CASCADE)
+#    users = models.ManyToManyField(Author, related_name='requirement_comment_likes')
+#    created_at = models.DateTimeField(auto_now_add=True)
+
+#    def __str__(self):
+#        return str(self.post.content)[:30] + " Likes: " +str(self.users.count())
