@@ -47,13 +47,19 @@ def homeredirect():
 
 
 def profile(request, slug):
-    #post = get_list_or_404
-     #post = Post.objects.filter(slug = slug)
-     profile = get_object_or_404(Author, slug=slug) #404 object not found
+    
+    #post = Post.objects.filter(slug = slug)
+    profile = get_object_or_404(Author, slug=slug) #404 object not found
+    karma= 0
+    #update users karma
+    posts = Post.objects.filter(user=profile)
+    for post in posts:
+        karma+=post.karma
+    profile.karma = karma
 
-     context = { 'profile' : profile,}
+    context = { 'profile' : profile,}
 
-     return render(request, "profile.html", context)
+    return render(request, "profile.html", context)
 
 def post(request, slug):
     #post = get_list_or_404
@@ -187,7 +193,7 @@ def like_post(request):
         #check if they had it disliked
         if post.dislikes.filter(id=author.id).exists():
             post.dislikes.remove(author)
-
+    post.update_karma()
     post.save()
     #context = { 'posts' : posts,}
     return render(request, "discussions.html")
@@ -211,7 +217,7 @@ def dislike_post(request):
         #check if they had it liked
         if post.likes.filter(id=author.id).exists():
             post.likes.remove(author)
-
+    post.update_karma()
     post.save()
     return render(request, "discussions.html")
 

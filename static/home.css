@@ -1,0 +1,4 @@
+.card-content:hover{
+    box-shadow: rgba(3,8,20,0.1) .6rem .6rem 0.5rem, rgba(2,8,20,0.1) .8rem .8rem .7rem;
+    transform: translateY(3px) scale(1.1);
+}

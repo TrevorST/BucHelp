@@ -71,21 +71,6 @@ function dislike_function(post_id) {
             current_counter +=  1;
             counter_element.innerText = current_counter
         }
-        //post
-        var pk = $(like_button).attr('value');
-        $(like_button).ajax({
-            type: 'POST',
-            url: "{% url 'BucOverflow:like_post' %}",
-            data: {
-                'id': pk,
-                'csrfmiddlewaretoken': '{{ csrf_token }}'
-            },
-            success: function(response){
-                //$('#like-section').html(response['form'])
-            },
-            error: function(rs, e){
-                console.log(rs.responseText);
-            },
-        });//end post
+        
     }
 }
