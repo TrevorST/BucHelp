@@ -1,16 +1,71 @@
 {% load static %}
+
 <html lang="en">
+
 
 <style>
 
 .site-footer {
   background: #00003d;
-  height: 100px;
+  height: auto;
 }
 
 body {background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #ffffff 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;}
   
 </style>
+<link rel="stylesheet" type='text/css' href="{% static 'base.css' %}">
+<!---Load jquery-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--Used for liking/disliking posts and comments-->
+<script type="text/javascript">
+  $(document).ready(function(event){
+    $(document).on('click', '#like', function(event){
+        event.preventDefault();
+        var pk = $(this).attr('value');
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'BucOverflow:like_post' %}",
+            data: {
+                'id': pk,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response){
+                //$('#like-section').html(response['form'])
+            },
+            error: function(rs, e){
+                console.log(rs.responseText);
+            },
+        });
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(event){
+    $(document).on('click', '#dislike', function(event){
+        event.preventDefault();
+        var pk = $(this).attr('value');
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'BucOverflow:dislike_post' %}",
+            data: {
+                'id': pk,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response){
+                //$('#like-section').html(response['form'])
+            },
+            error: function(rs, e){
+                console.log(rs.responseText);
+            },
+        });
+    });
+  });
+</script>
+
+
 
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
   <nav style="background-color: #FFc72c;" class="navbar is-warning" role="navigation" aria-label="main navigation">
@@ -68,7 +123,7 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
         </div>
 
         {% else %}
-          <a><a href="/profile/{{ user.username }}/">Hello, {{user.username}}!</a> </a>
+          <a class="navbar-link" href="/profile/{{ user.username }}/">Hello, {{user.username}}!</a>
           <a class="button is-info" href="/bucoverflow/logout"><strong>Log Out</strong></a>
         {% endif %}
 
@@ -89,6 +144,8 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
 
 {% block content %}
 {% endblock content%}
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<a id="return-to-top"><i class="icon-chevron-up"></i></a>
 
 <img src="{% static 'mountains.svg' %}">
 <div style><strong>
@@ -118,6 +175,7 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
     <script src="../js/bulma.js"></script>
 </footer>
 </strong></div>
+<script src="{% static 'base.js' %}"></script>
 </body>
 </html>
 

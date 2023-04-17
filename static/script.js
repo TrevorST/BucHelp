@@ -1,9 +1,11 @@
-alert('durrr')
+
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//const letters= "abcdefghijklmnopqrstuvwxyz";
 
 
 const text = document.querySelector(".texteffect");
 let flash = true;
+/*
 const interval2 = setInterval(() => {
     if(iterations%5==0)
         if(flash)
@@ -16,6 +18,7 @@ const interval2 = setInterval(() => {
         text.target.innerText = text.target.innerText.substring(0,length-1) + "_" //underscore
         iterations += 1;
 }, 30);
+*/
 
 
 

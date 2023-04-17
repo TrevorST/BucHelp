@@ -27,6 +27,18 @@
     font-weight: bold;
     margin-right: 5px;
     }
+
+    .wrap {  height: 256px;overflow: hidden; }
+    .frame { width: 800px; height: 600px; overflow:hidden}
+    .frame {
+        -ms-zoom: 0.75;
+        -moz-transform: scale(0.25);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.25);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.25);
+        -webkit-transform-origin: 0 0;
+    }
     
   </style>
 
@@ -55,8 +67,9 @@
           <!---Meme of the day microservice-->
             <div class="column is-2">
               <a style="margin-bottom: 25px;"class="button is-primary is-block is-alt is-large" href="/bucoverflow/createpost">New Post</a>
-              <div class="box content">
+              <div class="box content wrap">
                 <h1>Meme of the Day</h1>
+                <iframe class="frame" src="https://finalprojectcsci311020230410153042.azurewebsites.net/images/meme2.jpg"></iframe>
               </div>
             </div>
 
@@ -68,11 +81,46 @@
           <article class="post" style="padding-bottom: 25px;">
             <div class="columns">
               <div class="coulmn is-2">
-                <div style="display: flex; flex-direction: column;">
-                  <span onclick="like_function({{post.pk}})" id="like-{{post.pk}}" class="vote_up_off"></span>
-                  <div style="padding-left: 20px;" id="counter-{{post.pk}}"> {{ post.karma }} </div>
-                  <span onclick="dislike_function({{post.pk}})" id="dislike-{{post.pk}}" class="vote_down_off"></span>
-                </div>
+                <!---LIKE//DISLIKE FORM-->
+                {% if user.is_authenticated %}
+                  <!--include app name-->
+                  <form action="{% url 'BucOverflow:like_post' %}" method="post">
+                    {% csrf_token %}
+                    {% if post.id in postsliked %} <!--See if user liked post already-->
+                    <div style="display: flex; flex-direction: column;">
+                      <div id="like" value="{{ post.id }}">
+                      <span onclick="like_function({{post.pk}})" id="like-{{post.pk}}" class="vote_up_on"></span></div>
+                      <div style="padding-left: 20px;" id="counter-{{post.pk}}"> {{ post.karma }} </div>
+                      <div id="dislike" value="{{ post.id }}">
+                      <span onclick="dislike_function({{post.pk}})" id="dislike-{{post.pk}}" class="vote_down_off"></span></div>
+                    </div>
+                    {% elif post.id in postsdisliked %} <!--See if user disliked post already-->
+                    <div style="display: flex; flex-direction: column;">
+                      <div id="like" value="{{ post.id }}">
+                      <span onclick="like_function({{post.pk}})" id="like-{{post.pk}}" class="vote_up_off"></span></div>
+                      <div style="padding-left: 20px;" id="counter-{{post.pk}}"> {{ post.karma }} </div>
+                      <div id="dislike" value="{{ post.id }}">
+                      <span onclick="dislike_function({{post.pk}})" id="dislike-{{post.pk}}" class="vote_down_on"></span></div>
+                    </div>
+                    {% else %}  <!--User hasnt liked or disliked post-->
+                    <div style="display: flex; flex-direction: column;">
+                      <!---<span onclick="like_function({{post.pk}})" id="like-{{post.pk}}" class="vote_up_off"></span>--->
+                      <!--Div id="like" is used in the AJAX POST request in base.html-->
+                      <div id="like" value="{{ post.id }}">
+                        <!--Used strictly for client side js-->
+                      <span onclick="like_function({{post.pk}})" id="like-{{post.pk}}" class="vote_up_off"></span></div>
+                      <div style="padding-left: 20px;" id="counter-{{post.pk}}"> {{ post.karma }} </div>
+                      <div id="dislike" value="{{ post.id }}">
+                      <span onclick="dislike_function({{post.pk}})" id="dislike-{{post.pk}}" class="vote_down_off"></span></div>
+                    </div>
+                    {% endif %}
+                  </form>
+                  <!---USER not signed in-->
+                {% else %}
+                      <span onclick="location='{% url 'BucOverflow:signin' %}'" id="like" class="vote_up_off"></span>
+                      <div style="padding-left: 20px;" id="counter-{{post.pk}}"> {{ post.karma }} </div>
+                      <span onclick="location='{% url 'BucOverflow:signin' %}'" id="dislike-{{post.pk}}" class="vote_down_off"></span>
+                {% endif %}
               </div>
 
               <div class="column">
@@ -94,7 +142,7 @@
                           <div class="media-content">
                             <div class="content">
                               <p>
-                                <a href="profile/{{post.comments.all.0.user.slug }}/">{{ post.comments.all.0.user }}</a> replied {{post.comments.all.0.created_at}}  &nbsp;
+                                <a href="profile/{{post.comments.all.0.user.slug }}/">{{ post.comments.all.0.user }}</a> replied {{post.comments.all.0.timeElapsed}}  &nbsp;
                                 <span class="tag">Question</span>
                               </p>
                             </div>

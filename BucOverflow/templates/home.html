@@ -18,6 +18,10 @@
         <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/hero.css">
         <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+        <link rel="stylesheet" type='text/css' href="{% static 'home.css' %}">
+
+        
+        
     </head>
 
     <style>
@@ -50,9 +54,21 @@
         text-align: center;
         color: rgb(255, 255, 255);
         text-shadow: 2px 2px #000000;
-        font-size: 120px;
+        font-size: 8vw; /*120px;*/
         /*font-family:"Raleway", sans-serif;*/
         font-family: "Space Mono", monospace;
+    }
+
+    @media screen and (min-width: 768px) {
+        .title{
+            font-size: 6rem;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .title{
+            font-size: 8rem;
+        }
     }
 
     .description  {
@@ -77,8 +93,8 @@
         </header>
 
         <br><br><br>
-
-        <section class="container">
+        <!--remove top-100 maybe add on hover animation-->
+        <section style=" top:-100px; " class="container">
             <div class="columns features">
                 <div class="column is-4">
                     <div class="card is-shady"><br>
@@ -135,10 +151,18 @@
               </div>
           </div>
           
-        <br><br><br><br>
+
         
 </html> 
 
 </body>
+<script>
+    const parallax = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      let offset = window.pageYOffset-500;
+      parallax.style.backgroundPositionY = offset * 0.3 + 'px';
+    });
+</script>
 <script src="{% static 'script.js' %}"></script>
 {% endblock content%}

@@ -10,11 +10,13 @@
     </head>
 
     <body>
+        <!---
         <section style="background-color:  #041E42;" class="hero is-small is-success mb-4">
             <div class="hero-body">
                 <h1 class="texteffect title" data-value="Login Page">Login Page</h1>
             </div> 
         </section>
+        --->
         <div class="hero is-fullheight">
             <div class="hero-body is-justify-content-center is-align-items-center">
                 <div class="columns is-flex is-flex-direction-column box">
@@ -35,7 +37,7 @@
                         <button class="button is-primary is-fullwidth" type="submit">Login</button>
                     </div>
                     <div class="has-text-centered">
-                        <p class="is-size-7"> Don't have an account? <a href="#" class="has-text-primary">Sign up</a>
+                        <p class="is-size-7"> Don't have an account? <a href="{% url 'BucOverflow:signup' %}" class="has-text-primary">Sign up</a>
                         </p>
                     </div>
                 </form>

@@ -1,0 +1,23 @@
+.card:hover{
+    animation: hovered;
+    animation-duration: .6s;
+    animation-fill-mode: forwards; /*animation does not restart*/
+    animation-timing-function: cubic-bezier(.05, .8, .1, .95);
+}
+.card{
+    animation: nothovered;
+    animation-duration: .6s;
+    animation-fill-mode: forwards; /*animation does not restart*/
+    animation-timing-function: cubic-bezier(.05, .8, .1, .95);
+}
+@keyframes hovered{
+    0%{}
+    100%{box-shadow: rgba(3,8,20,0.1) .6rem .6rem 0.5rem, rgba(2,8,20,0.1) .8rem .8rem .7rem;
+        transform: translateY(3px) scale(1.07);}
+}
+
+@keyframes nothovered{
+    0%{box-shadow: rgba(3,8,20,0.1) .6rem .6rem 0.5rem, rgba(2,8,20,0.1) .8rem .8rem .7rem;transform: translateY(3px) scale(1.07);}
+    100%{box-shadow: rgba(3,8,20,0) .3rem .3rem 0.2rem, rgba(2,8,20,0) .4rem .4rem .2rem;
+        transform: translateY(0px) scale(1.0);}
+}
