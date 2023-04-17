@@ -19,7 +19,6 @@ const interval2 = setInterval(() => {
 
 
 
-
 document.querySelector(".texteffect").onmouseover = event => {
     let iterations = 0;
     let length = event.target.dataset.value.length;

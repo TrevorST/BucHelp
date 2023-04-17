@@ -134,3 +134,23 @@ class SignUpView(generic.CreateView):
     template_name = "signup.html"
     success_url = reverse_lazy('BucOverflow:home')
 
+
+#return sorted list
+def search(posts, search):
+    count = 0
+    highestCount = 0
+    mostRelevantPost= posts[0]
+    temp=""
+    for post in posts:
+        count = 0
+        #for each post object get the number of matches
+        for element in post.title:
+            #do not exceede search string length
+            if(count<len(search)):
+                if(search[count] == element):
+                    count += 1
+        if count > highestCount:
+            highestCount = count
+            mostRelevantPost = post
+
+    return mostRelevantPost
