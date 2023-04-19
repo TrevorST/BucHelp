@@ -28,16 +28,10 @@
     margin-right: 5px;
     }
 
-    .wrap {  height: 256px;overflow: hidden; }
-    .frame { width: 800px; height: 600px; overflow:hidden}
-    .frame {
-        -ms-zoom: 0.75;
-        -moz-transform: scale(0.25);
-        -moz-transform-origin: 0 0;
-        -o-transform: scale(0.25);
-        -o-transform-origin: 0 0;
-        -webkit-transform: scale(0.25);
-        -webkit-transform-origin: 0 0;
+    .wrap {  height: relative;overflow: hidden; }
+    .frame { width: relative; height: relative; overflow:hidden; display:block;}
+    .centerh1 {
+      text-align: center;
     }
     
   </style>
@@ -68,8 +62,8 @@
             <div class="column is-2">
               <a style="margin-bottom: 25px;"class="button is-primary is-block is-alt is-large" href="/bucoverflow/createpost">New Post</a>
               <div class="box content wrap">
-                <h1>Meme of the Day</h1>
-                <iframe class="frame" src="https://finalprojectcsci311020230410153042.azurewebsites.net/images/meme2.jpg"></iframe>
+                <h1 class="centerh1">Meme of the Day</h1>
+                <img style="margin:0 auto;" class="frame" src="https://finalprojectcsci311020230410153042.azurewebsites.net/images/meme2.jpg">
               </div>
             </div>
 
