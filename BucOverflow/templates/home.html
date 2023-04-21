@@ -91,6 +91,7 @@
     }
 
     h4 {text-align: center;}
+
     </style>
     
     </body>
@@ -117,7 +118,7 @@
                             <div class="content">
                                 <h4>Create Posts </h4>
                                 <p>Join in with fellow Bucs to discuss ideas, questions, and concerns that you may encounter through your days on campus.</p>
-                                <h4><a href="/bucoverflow/discussions">Learn more</a></h4>
+                                <h4><a href="/bucoverflow/createpost">Learn more</a></h4>
                             </div>
                         </div>
                     </div>
@@ -143,9 +144,9 @@
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                <h4> Solve Problems Together </h4>
-                                <p>Here at ETSU, we focus heavily on being a community and encourage eachother to reach out a helping hand when needed.</p>
-                                <h4><a href="/bucoverflow/discussions">Learn more</a></h4>
+                                <h4> Learn About Our Team </h4>
+                                <p>Our development team utilized scrum practices to create a campus-friendly application to help everyone at ETSU.  </p>
+                                <h4><a href="/bucoverflow/about">Learn more</a></h4>
                             </div>
                         </div>
                     </div>
@@ -168,6 +169,7 @@
 </html> 
 
 </body>
+
 <script>
     const parallax = document.querySelector('header');
     
@@ -176,5 +178,7 @@
       parallax.style.backgroundPositionY = offset * 0.3 + 'px';
     });
 </script>
+
 <script src="{% static 'script.js' %}"></script>
+
 {% endblock content%}
