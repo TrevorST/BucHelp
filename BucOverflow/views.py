@@ -64,10 +64,22 @@ def profile(request, slug):
 def post(request, slug):
     #post = get_list_or_404
      #post = Post.objects.filter(slug = slug)
-     post = get_object_or_404(Post, slug=slug) #404 object not found
+    post = get_object_or_404(Post, slug=slug) #404 object not found
+    postsliked = []
+    postsdisliked = []
+    if request.user.is_authenticated:
+        author = Author.objects.get(user=request.user)
+        if post.likes.filter(user=author.user).exists(): #might need to overwrite author equals val
+                postsliked.append(post.id) 
+        if post.dislikes.filter(user=author.user).exists(): #might need to overwrite author equals val
+            postsdisliked.append(post.id) 
 
-     form = CommentForm(request.POST or None)
-     if request.method == "POST":
+        
+
+     
+
+    form = CommentForm(request.POST or None)
+    if request.method == "POST":
         if form.is_valid():
             #get the post
             post = Post.objects.get(slug=slug)
@@ -79,9 +91,11 @@ def post(request, slug):
             post.comments.add(new_comment)
             form.save_m2m()
 
-     context = { 'post' : post,}
+    context = { 'post' : post,
+                'postsliked' : postsliked,
+                'postsdisliked' : postsdisliked}
 
-     return render(request, "post.html", context)
+    return render(request, "post.html", context)
 
 def discussions(request):
     posts = Post.objects.all()

@@ -46,8 +46,20 @@
     .background {
         background-position: center;
         background-size: cover;
+        
+        background-position: top 500px;
+
         background-image: url("/static/etsu_campus.jpg");
         min-height: 65%;
+    }
+
+    @media only screen and (max-width: 768px) {
+    .background {
+        background-position: top 500px;
+        margin-bottom: 5%;
+        min-height: 75%;
+        background-repeat: no-repeat;
+    }
     }
 
     .title  {

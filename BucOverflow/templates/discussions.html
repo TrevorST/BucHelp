@@ -47,16 +47,26 @@
 
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-    <h1  class="texteffect title" data-value="Discussions">Discussions</h1>
-    <form class="search-form">
-      <input type="text" placeholder="Search...">
-      <button type="submit">Go</button>
-      <span class="hashtag" style="background-color: #F44336">Rising</span>
-      <span class="hashtag" style="background-color: #E91E63">Controversial</span>
-      <span class="hashtag" style="background-color: #9C27B0">Trending</span>
-      <span class="hashtag" style="background-color: #673AB7">For Fun</span>
-      <span class="hashtag" style="background-color: #3F51B5">Nerd Stuff</span>
-    </form>
+      <h1  class="texteffect title" data-value="Discussions">Discussions</h1>
+      
+      <form class="search-form">
+        <div class="field has-addons">
+          <div class="control">
+            <input class="input" type="text" placeholder="Find a post">
+          </div>
+          <div class="control">
+            <a class="button is-info">
+              Search
+            </a>
+          </div>
+        </div>
+
+        <span class="hashtag" style="background-color: #F44336">Rising</span>
+        <span class="hashtag" style="background-color: #E91E63">Controversial</span>
+        <span class="hashtag" style="background-color: #9C27B0">Trending</span>
+        <span class="hashtag" style="background-color: #673AB7">Top</span>
+        <span class="hashtag" style="background-color: #3F51B5">Answered</span>
+      </form>
     </div> 
   </section>
 
@@ -129,7 +139,7 @@
                           <div class="media-content"></div>
                           <div class="media-right"><p>{{ post.created_at }}</p></div>
                         </div>
-                        <h4><a href="post/{{post.slug}}/">{{ post.title }}</a> <span class="tag is-primary is-medium ">Tag example</span> </h4>
+                        <h4><a href="post/{{post.slug}}/">{{ post.title }}</a> <span class="tag is-primary is-medium ">Question</span> </h4>
                         <p>{{post}}</p>
                         {% if post.comments.all.0 %}
                         <div class="media">
