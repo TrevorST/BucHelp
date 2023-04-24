@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //const letters= "abcdefghijklmnopqrstuvwxyz";
@@ -22,10 +23,15 @@ const interval2 = setInterval(() => {
 
 
 
-
+=======
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+alert("yo");
+>>>>>>> Stashed changes
 document.querySelector(".texteffect").onmouseover = event => {
     let iterations = 0;
     let length = event.target.dataset.value.length;
+    let flash = true;
+    
 
     const interval = setInterval(() => {
         //Split at every character
@@ -44,7 +50,7 @@ document.querySelector(".texteffect").onmouseover = event => {
 
         
         //set max iteration count to length of the word
-        if(iterations >= event.target.dataset.value.length){
+        if(iterations >= event.target.dataset.value.length*5){
             clearInterval(interval);
             
         }

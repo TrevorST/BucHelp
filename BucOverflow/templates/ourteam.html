@@ -2,6 +2,8 @@
 {% block content %}
 {% load static %}
 
+
+<!-- Ourteam template is a page used to introduce all teams members who participated in this project -->
 <!DOCTYPE html>
 <title>Our Team</title>
 
@@ -11,15 +13,35 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Start of Style sections -->
 <style>
 
-</style>
+  a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  margin-top: 6px;
+  }
 
-<body>
+ /* Next 2 Styles are for backarrow design */
+  .previous {
+  background-color: #FFc72c;;
+  color: black;
+  }
   
+  .round {
+  border-radius: 50%;
+  }
+</style>
+<!-- End of Style section -->
+
+
+<!-- Start of HTML page functionality -->
+<body>
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-        <h1  class="texteffect title" data-value="Our Team">Our Team</h1>
+      <a href="/bucoverflow/home" style="text-align:left;float:left; margin-right: 20px; color: black;" class="previous round">&#8249; </a>
+      <h1  class="texteffect title" data-value="Our Team">Our Team</h1>
     </div> 
   </section>
  
@@ -27,6 +49,7 @@
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
     <h2 class="w3-wide"><strong>Meet Our Team!</strong></h2><br>
 
+    <!-- Team information -->
     <div class="w3-row w3-padding-32">
       <div class="w3-half">
         <b><u>Product Owner:</u></b>
@@ -48,6 +71,7 @@
     </div>
   </div>
 
+  <!-- Script implementation -->
   <script src="{% static 'script.js' %}"></script>
 
 </body>

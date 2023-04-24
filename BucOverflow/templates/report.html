@@ -20,7 +20,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
+<!-- Start of Style CSS section -->
 <style>
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 17px;
+  margin-top: 6px;
+  }
+
+/* Next two styles hold backarrow design */
+.previous {
+  background-color: #FFc72c;;
+  color: black;
+  }
+  
+.round {
+  border-radius: 50%;
+  }
+/* ---------------------------------------- */
 
 /* CSS for feedback images*/
 .ratings img{
@@ -53,11 +72,12 @@
   
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-        <h1  class="texteffect title" data-value="Report an Issue">Report an Issue</h1>
+      <a href="/bucoverflow/home" style="text-align:left;float:left; margin-right: 20px; color: black;" class="previous round">&#8249; </a>
+      <h1  class="texteffect title" data-value="Report an Issue">Report an Issue</h1>
     </div> 
   </section>
 
-
+  <!-- Start of Post token functionality to handle feedback data -->
   <form action="/bucoverflow/home" method="post">
     {% csrf_token %}
     <div class="w3-row-padding" style="margin:50px 100px">
@@ -70,6 +90,7 @@
             <h6 style="font-size: 20px"; >Rate your experience:</h6> <br>
             <div class="ratings" style="text-align: center; column-count: 5; column-width:auto; margin-left: 90px; margin-right: 90px;">
 
+              <!-- Displays feedback faces from static file -->
               <div class="column">
                 <img src="/static/feedback-faces/kinser-face.jpg">
               </div>
@@ -96,6 +117,7 @@
                   <div class="control">
                     <textarea class="textarea" rows="7" placeholder="Type here:"></textarea>
                   </div> <br>
+                  <!-- Sumbit button prompt a Bulma modal to display a "Thank you" message -->
                   <button class="js-modal-trigger" input type="reset" data-target="modal-js-example" style="background-color: #023479; 
                                 color:#ffffff; border-radius: 8px; padding-left: 7px; padding-right: 7px">
                     Submit
@@ -181,7 +203,7 @@
   This script handles the feedback image filter based on the click. It also unhighlights 
   each selection when a new selection is made
 
-  Source: Alec made dis shi baby letz goooooo!
+  Source: Alec made dis shit baby letz goooooo! (Someone please hire me)
 -->
 
 <script>

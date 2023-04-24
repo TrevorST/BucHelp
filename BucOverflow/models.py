@@ -12,7 +12,7 @@ import math
 User = get_user_model()
 
 
-##broken
+#Models python file handles model functionality and information requests
 
 @receiver(post_save, sender=User)
 def create_user_author(sender, instance, created, **kwargs):

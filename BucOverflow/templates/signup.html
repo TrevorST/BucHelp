@@ -1,14 +1,45 @@
 {% extends "base.html" %}
-
 {% block content %}
 {% load static %}
+
+<!-- 
+    Signup template is for when a new user wants to create an account
+ -->
+
+ <!-- Start of Style css -->
+
+<style>
+  
+    a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 7px 17px;
+    margin-top: 6px;
+    }
+  
+    /* Next 2 styles are for back arrow design */
+    .previous {
+    background-color: #FFc72c;;
+    color: black;
+    }
+    
+    .round {
+    border-radius: 50%;
+    }
+  
+  </style>
+
+ <!-- Start of HTML page functionality -->
 
 <body>
     <section style="background-color:  #041E42;" class="hero is-small is-success mb-4">
         <div class="hero-body">
+            <!-- Backarrow path and functionality -->
+            <a href="/bucoverflow/home" style="text-align:left;float:left; margin-right: 20px; color: black;" class="previous round">&#8249; </a>
             <h1 class="texteffect title" data-value="Sign Up Page">Sign Up Page</h1>
         </div> 
     </section>
+    <!-- Post token functionality -->
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -16,6 +47,7 @@
     </form>
     <br><br><br><br><br><br>
 
+    <!-- Script functionality -->
     <script src="{% static 'script.js' %}"></script>
 </body>
 {% endblock content%}

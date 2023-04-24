@@ -2,12 +2,38 @@
 {% block content %}
 {% load static %}
 
+<!-- 
+  Discussions template is to display the sites discussions in a listing as well as information pertaining
+  to them. Additional functionality includes upvotes/downvotes, searchbars, etc...
+ -->
+
 <!DOCTYPE html>
 <title>BucHelp</title>
 <body>
   <link rel="stylesheet" type='text/css' href="{% static 'vote.css' %}">
 
+  <!-- Start of style section (Jesus we have a lot of styles) -->
   <style>
+
+  a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 17px;
+  margin-top: 0px;
+  }
+
+  /* These next 2 styles are for backarrow functionality */
+  .previous {
+  background-color: #FFc72c;;
+  color: black;
+  }
+  
+  .round {
+  border-radius: 50%;
+  }
+  /* ------------------------------------------------------ */
+
+  /* The rest of the style deal with hathtag, upvote/downvote, and search functionlity */
     .search-form {
     float: left;
     margin-top: 10px;
@@ -35,16 +61,20 @@
     }
     
   </style>
+  <!-- End of style section -->
 
 
 
+  <!-- Start of HTML funcitonality  -->
 
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
-    <h1  class="texteffect title" data-value="Discussions">Discussions</h1>
+      <a href="/bucoverflow/home" style="text-align:left;float:left; margin-right: 20px; color: black;" class="previous round">&#8249; </a>
+      <h1  class="texteffect title" data-value="Discussions">Discussions</h1>
     <form class="search-form">
       <input type="text" placeholder="Search...">
       <button type="submit">Go</button>
+      <!-- Tag functionlity classes -->
       <span class="hashtag" style="background-color: #F44336">Rising</span>
       <span class="hashtag" style="background-color: #E91E63">Controversial</span>
       <span class="hashtag" style="background-color: #9C27B0">Trending</span>
@@ -55,15 +85,21 @@
   </section>
 
 
-
+  <!-- Container for new post buttom prompt, and the microservice implemented (Meme of the Day) -->
   <section class="container">
     <div class="columns">
           <!---Meme of the day microservice-->
             <div class="column is-2">
               <a style="margin-bottom: 25px;"class="button is-primary is-block is-alt is-large" href="/bucoverflow/createpost">New Post</a>
               <div class="box content wrap">
+<<<<<<< HEAD
                 <h1 class="centerh1">Meme of the Day</h1>
                 <img style="margin:0 auto;" class="frame" src="https://finalprojectcsci311020230410153042.azurewebsites.net/images/meme2.jpg">
+=======
+                <!-- Microservice implementation -->
+                <h1>Meme of the Day</h1>
+                <iframe class="frame" src="https://finalprojectcsci311020230410153042.azurewebsites.net/images/meme2.jpg"></iframe>
+>>>>>>> bfdbe3a390712f2025af635a8af8451497e7cde3
               </div>
             </div>
 
