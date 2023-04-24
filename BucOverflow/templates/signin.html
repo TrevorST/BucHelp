@@ -2,6 +2,11 @@
 {% block content %}
 {% load static %}
 
+<!-- 
+    Signin template dislays and handles the user signin page when an none-new user enters the site
+ -->
+
+ <!-- Start of HTML page functionality -->
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +15,10 @@
     </head>
 
     <body>
-        <!---
-        <section style="background-color:  #041E42;" class="hero is-small is-success mb-4">
-            <div class="hero-body">
-                <h1 class="texteffect title" data-value="Login Page">Login Page</h1>
-            </div> 
-        </section>
-        --->
         <div class="hero is-fullheight">
             <div class="hero-body is-justify-content-center is-align-items-center">
                 <div class="columns is-flex is-flex-direction-column box">
+                <!-- Post token functionality -->
                 <form method="POST" action="">
                     {% csrf_token %}   
                     <div class="column">
@@ -44,6 +43,7 @@
                 </div>
             </div>
         </div>
+        <!-- Script implementation -->
         <script src="{% static 'script.js' %}"></script>
     </body>
 

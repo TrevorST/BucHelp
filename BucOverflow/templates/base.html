@@ -1,18 +1,29 @@
 {% load static %}
 
+<!--
+Base.html template defines page standards that all other templates implement.
+Standards include headers, navigations, and design standards.
+-->
+
 <html lang="en">
 
 
 <style>
 
+/* Style for footer on site */
 .site-footer {
   background: #00003d;
   height: auto;
 }
 
+/* Style for site background which includes url */
 body {background: url(https://www.etsu.edu/_images/background_images/noise.png) repeat 0 0, radial-gradient(circle at 50% 100%, hsla(0,0%,100%,0.1) 50%, hsla(44,100%,59%,0.1) 66%, hsla(209,36%,54%,0.3) 100%) no-repeat fixed, linear-gradient(to bottom, #ffffff 62%,hsla(44,100%,59%,0.1) 138%) no-repeat fixed;}
   
 </style>
+
+
+<!-- Start of HTML functionality -->
+
 <link rel="stylesheet" type='text/css' href="{% static 'base.css' %}">
 <!---Load jquery-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -20,6 +31,8 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!--Used for liking/disliking posts and comments-->
+
+<!-- JS script for token post like -->
 <script type="text/javascript">
   $(document).ready(function(event){
     $(document).on('click', '#like', function(event){
@@ -42,6 +55,8 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
     });
   });
 </script>
+
+<!-- JS script for token post dislike -->
 <script type="text/javascript">
   $(document).ready(function(event){
     $(document).on('click', '#dislike', function(event){
@@ -65,13 +80,14 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
   });
 </script>
 
-
+<!-- Navigation and background functionality and design -->
 
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
   <nav style="background-color: #FFc72c;" class="navbar is-warning" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
+    <!-- Nvigation logo and href-->
     <a class="navbar-item" href="/bucoverflow/home">
-      <img src="{% static 'Logo.png' %}" width="112" height="28">
+      <img src="{% static 'Logo.png' %}" width="112" height="28"> 
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -81,35 +97,40 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
     </a>
   </div>
 
+  <!-- Navigation bar items and hrefs -->
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
 
-     
-
-      <a class="navbar-item" href="/bucoverflow/discussions"> <!--#######-->
+      <a class="navbar-item" href="/bucoverflow/discussions">
+        <!-- Navigate to discussions page -->
         Explore 
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
+          <!-- Dropdown to multiple selections (3) -->
           More
         </a>
 
         <div class="navbar-dropdown">
           <a class="navbar-item" href="/bucoverflow/about">
-            About Us
+            <!-- Navigate to about page -->
+            About Us 
           </a>
           <a class="navbar-item" href="/bucoverflow/ourteam">
+            <!-- Navigate to ourteam page -->
             Our Team
           </a>
           <hr class="navbar-divider">
           <a class="navbar-item" href="/bucoverflow/report">
+            <!-- Navigate to report page -->
             Report an issue
           </a>
         </div>
       </div>
     </div>
 
+    <!-- Navigation bar signup and login functionality -->
     <div class="navbar-end">
       <div class="navbar-item">
         {% if not user.is_authenticated %}
@@ -122,6 +143,7 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
           </a>
         </div>
 
+        <!-- If user is logged in, there username will display instead -->
         {% else %}
           <a class="navbar-link" href="/profile/{{ user.username }}/">Hello, {{user.username}}!</a>
           <a class="button is-info" href="/bucoverflow/logout"><strong>Log Out</strong></a>
@@ -144,9 +166,12 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
 
 {% block content %}
 {% endblock content%}
+
+<!-- Footer design and functionality  -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <a id="return-to-top"><i class="icon-chevron-up"></i></a>
 
+<!-- Background image -->
 <img src="{% static 'mountains.svg' %}">
 <div style><strong>
   <footer class="site-footer">
@@ -155,23 +180,27 @@ body {background: url(https://www.etsu.edu/_images/background_images/noise.png) 
             <div class="column is-3 is-offset-2">
                 <string style="color:white;">Explore</strong>
                 <ul>
+                  <!-- Navigation to discussions page -->
                     <li><a href="/bucoverflow/discussions">Read and create posts</a></li>
                 </ul>
             </div>
             <div class="column is-3">
                 <strong style="color:white;">About</strong>
                 <ul>
+                   <!-- Navigation to about page -->
                     <li><a href="/bucoverflow/about">Learn about our application</a></li>
                 </ul>
             </div>
             <div class="column is-4">
                 <strong style="color:white;">Our Team</strong>
                 <ul>
+                   <!-- Navigation to ourteam page -->
                     <li><a href="/bucoverflow/ourteam">Learn about our team</a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <!-- Script implementations -->
     <script src="../js/bulma.js"></script>
 </footer>
 </strong></div>

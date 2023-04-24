@@ -2,6 +2,9 @@
 {% block content %}
 {% load static %}
 
+<!-- 
+  About template displays information about our team members nd project details
+ -->
 
 <!DOCTYPE html>
 <title>BucHelp</title>
@@ -12,8 +15,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Start of Style CSS -->
 <style>
-  
   a {
   text-decoration: none;
   display: inline-block;
@@ -21,6 +24,7 @@
   margin-top: 6px;
   }
 
+  /* Next 2 styles are for back arrow design */
   .previous {
   background-color: #FFc72c;;
   color: black;
@@ -28,14 +32,15 @@
   
   .round {
   border-radius: 50%;
-}
-
+  }
 </style>
 
+<!-- Start of HTML page functionality -->
 <body>
   
   <section style="background-color:  #041E42;"class="hero is-small is-success mb-4">
     <div class="hero-body">
+      <!-- Backarrow functionality -->
         <a href="/bucoverflow/home" style="text-align:left;float:left; margin-right: 20px; color: black;" class="previous round">&#8249; </a>
         <h1 class="texteffect title" data-value="About Us">About Us</h1>
     </div> 
@@ -43,7 +48,10 @@
  
 
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <!-- ETSU logo -->
     <img src="{% static 'etsu bucky.png'%}" width="250" height="400" class="center">
+
+    <!-- Project details -->
     <h2 class="w3-wide"><strong>BucHelp</strong></h2>
     <p class="w3-justify"> &emsp;&emsp;&emsp;BucHelp is a student created web-aplication designed to allow anyone to ask questions pertaining to East Tennessee State University.
                            Similar to StackOverflow, BucHelp allows students, professors, staff, and visitors to ask for and give help to anything related to the ETSU. 
@@ -68,6 +76,7 @@
   </div>
 </body>
 
+<!-- Script implementation -->
 <script src="{% static 'script.js' %}"></script>
 
 {% endblock content%}

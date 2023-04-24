@@ -2,7 +2,10 @@
 {% block content %}
 {% load static %}
 
-
+<!-- 
+    Home template is the Home page of the application. Infomation regarding the application and vision are displayed
+    here as well as navigation links to various pages. Also this page looks so pretty :)
+ -->
 <!DOCTYPE html>
 <html>
     
@@ -21,28 +24,20 @@
         <link rel="stylesheet" type='text/css' href="{% static 'home.css' %}">
 
         
-        
     </head>
 
+    <!-- Style section CSS -->
     <style>
     
+    /* Style for blink animation */
     .blink {
         animation: blink 1s steps(1, end) infinite;
-
     }
-
     @keyframes blink {
-    0% {
-    opacity: 1;
+        0% { opacity: 1;}50% {opacity: 0;}100% {opacity: 1;}
     }
-    50% {
-    opacity: 0;
-    }
-    100% {
-    opacity: 1;
-    }
-}
-
+    
+    /*  */
     .background {
         background-position: center;
         background-size: cover;
@@ -54,7 +49,7 @@
         text-align: center;
         color: rgb(255, 255, 255);
         text-shadow: 2px 2px #000000;
-        font-size: 8vw; /*120px;*/
+        font-size: 120px;
         /*font-family:"Raleway", sans-serif;*/
         font-family: "Space Mono", monospace;
     }
@@ -86,10 +81,9 @@
 
         <header class="background w3-display-container w3-grayscale-min" id="myheader">
             <div class="w3-display-left w3-text-white" style="padding:100px">
-                <div style="display:flex; justify-content: center;">
-                <h1  class="texteffect title" data-value="BUCOVERFLOW_">BUCOVERFLOW</h1><h1 class="blink title">_</h1></div>
+                <h1  class="texteffect title" data-value="BUCOVERFLOW_">BUCOVERFLOW_</h1>
                 <p class="description">BucOverflow is an extension of BucHelp, is a post and reply based platform for individuals that need help at ETSU.</p>
-                <p style="text-align: center;"><a href="/bucoverflow/about" style="color:#789aea; text-shadow: 2px 2px #131353;">Learn more</a></p>
+                <p style="text-align: center;"><a href="/bucoverflow/discussions" style="color:#789aea; text-shadow: 1px 1px #131353;">Learn more</a></p>
             </div>     
         </header>
 
@@ -157,16 +151,5 @@
 </html> 
 
 </body>
-
-<script>
-    const parallax = document.querySelector('header');
-    
-    window.addEventListener('scroll', () => {
-      let offset = window.pageYOffset-500;
-      parallax.style.backgroundPositionY = offset * 0.3 + 'px';
-    });
-</script>
-
 <script src="{% static 'script.js' %}"></script>
-
 {% endblock content%}

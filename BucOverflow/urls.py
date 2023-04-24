@@ -5,6 +5,8 @@ from .views import base, discussions, home, about, ourteam, report, SignUpView
 
 app_name = "BucOverflow"
 
+# URL patterns for path navigational information
+
 urlpatterns = [
     path("", views.home, name="base"),
     path("discussions", views.discussions, name="discussions"),
