@@ -8,3 +8,17 @@ local_settings.py
 
 .env
 db.sqlite3
+BucHelp/__pycache__/__init__.cpython-311.pyc
+BucHelp/__pycache__/settings.cpython-311.pyc
+BucHelp/__pycache__/urls.cpython-311.pyc
+BucHelp/__pycache__/views.cpython-311.pyc
+BucHelp/__pycache__/wsgi.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0001_initial.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0002_rename_dweet_post.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0003_auto_20230216_2342.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0004_auto_20230216_2349.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0005_auto_20230221_1759.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0006_auto_20230224_0045.cpython-311.pyc
+BucOverflow/migrations/__pycache__/0007_auto_20230403_2006.cpython-311.pyc
+BucOverflow/migrations/__pycache__/__init__.cpython-311.pyc
+db.sqlite3
