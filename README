@@ -3,3 +3,9 @@
 "pip install -r requirements.txt"
 3. then type
 "python manage.py runserver"
+
+BucHelp Web Application
+_______________________
+BucHelp is a forum based website that allows
+users to ask questions and answer questions about
+East Tennessee State University. 
